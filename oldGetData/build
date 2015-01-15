@@ -1,0 +1,5 @@
+#!/bin/bash
+echo " "
+echo "Building the Test Application - Alejandro and derekmolloy.ie"
+echo " "
+g++ TestApplication.cpp EasyDriver.cpp SimpleGPIO.cpp L3GD20Hgyroscope.cpp -o TestApplicationExe

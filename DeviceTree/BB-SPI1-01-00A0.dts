@@ -1,0 +1,61 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "ti,beaglebone", "ti,beaglebone-black";
+
+    /* identification */
+    part-number = "BB-I2C1-UNF";
+
+    /* version */
+    version = "00A0";
+
+    /* state the resources this cape uses */
+    exclusive-use =
+        /* the pin header uses */
+        "P9.24", // I2C1_SCL
+        "P9.26", // I2C1_SDA
+        /* the hardware ip */
+        "i2c1";
+
+    fragment@0 {
+        target = <&am33xx_pinmux>;
+        __overlay__ {
+            bb_i2c2_unf: pinmux_bb_i2c2_unf_pins {
+                pinctrl-single,pins = <                                        
+                    0x184 0x13    /* P9_24 = i2c1_scl, OUTPUT_PULLUP | MODE3 */
+                    0x180 0x33    /* P9_26 = i2c1_sda, INPUT_PULLUP  | MODE3 */
+                >;
+            };
+        };
+    };
+
+    fragment@1 {
+        target = <&spi1>;
+        __overlay__ {
+            #address-cells     = <1>;
+            #size-cells     = <0>;
+            status            = "okay";
+            pinctrl-names    = "default";
+            pinctrl-0        = <&bb_i2c2_unf>;    
+            cs-gpios         = <&gpio4 17 0>, <&gpio1 7 0>;
+
+            spi1_0{
+                #address-cells       = <1>;
+                #size-cells       = <0>;
+                compatible           = "i2c1_unf";
+                reg               = <0>;
+                spi-max-frequency = <16000000>;
+                spi-cpha;          
+            };
+            spi1_1{
+                #address-cells       = <1>;
+                #size-cells       = <0>;
+                compatible           = "spidev";
+                reg               = <1>;
+                spi-max-frequency = <16000000>;
+                // Mode 0 (CPOL = 0, CPHA = 0)
+            };
+        };
+    };
+};
