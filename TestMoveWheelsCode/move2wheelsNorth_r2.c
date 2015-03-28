@@ -37,6 +37,7 @@
          // unsigned char byt[6];
       // } SENSOR_BUF;
       
+int calculateTurnRate( int maxNorth, int turn );
 
 int main ( void )
 {
@@ -58,10 +59,10 @@ int main ( void )
    usleep( 1000000 );  
    
    // Spin Robot, samples magnetic field and finds maximum magnetic field
-   printf( "Scanning area for Maximum Magnetic Field...\n");
+   system("reset");
+   DEBUG_PRINT( "Scanning area for Maximum Magnetic Field...\n");
    maxNorth = SpinRobotAndFindMaxNorth( ser4 );
-	printf("Max Magnetic Field found: %d\n\n", maxNorth );
-   
+	DEBUG_PRINT("Max Magnetic Field found: %d\n\n", maxNorth );
    
    // SET SPEED BETWEEN 0 to 63, it is added to stop command
    // This is used only for the function forwardBackwardM1() and ..M2()
@@ -69,11 +70,11 @@ int main ( void )
    // Set speed parameters
    dspeed = 2;
    topspeed = 40;
-   DEBUG_PRINT( "Speed Settings: \n dspeed = %d \ntopspeed = %d\n", dspeed, topspeed );
+   DEBUG_PRINT("Speed Settings: \n dspeed = %d \ntopspeed = %d\n", dspeed, topspeed );
    
    // Set North magnitude
    north = maxNorth - 300; //2700;//3100;
-   DEBUG_PRINT( "North Magnitude for FindNorth Control = %d\n", north );
+   DEBUG_PRINT("North Magnitude for FindNorth Control = %d\n", north );
    
    while(!exitFlag){
       
@@ -87,23 +88,20 @@ int main ( void )
       // Update current data points
       getData();
       
-
+      turn += calculateTurnRate( north, turn );
       
       // Display Speeds/Turns
-      printf("Current Speeds = M1-->%d, M2-->%d\n",speed1+turn,speed2+-turn);
+      printf("Current Speeds = M1-->%d, M2-->%d\n", speed1+turn, speed2-turn);
       printf("Current Turn Coefficient = %d, Actual turn difference is %d\n\n",turn, turn*2);         
       
       // Safety check to limit speed
-      if ((speed1+turn <= topspeed) || (speed2+turn <= topspeed ) || (speed1-turn <= topspeed) || (speed2-turn <= topspeed)){
+      if ((speed1+turn <= topspeed) && (speed2+turn <= topspeed ) && (speed1-turn <= topspeed) && (speed2-turn <= topspeed)){
       } else {
          // Speed Limit Reached; Set speed limit flag
          spdlimitflag = 1;
-         if (speed1 > 0 && speed2 > 0){
-            speed1 = 0;  speed2 = 0; turn = 0;
-         }else{
-            speed1 = 0; speed2 = 0; turn = 0;
-         }
-         turn = 0;
+         speed1 = 0;
+         speed2 = 0;
+         turn   = 0;
       }
       
       usleep( 100000 );  
@@ -130,29 +128,31 @@ int main ( void )
 }// end main
 
 
-int calculateTurnRate() {
+int calculateTurnRate( int maxNorth, int turn ) {
    
-      // Find Angle from north to set turn
-      if( magn.data.x.val < maxNorth){
-         // Calculate offset north
-         angle = calcNorthOffset( maxNorth, magn.data.x.val, magn.data.y.val, magn.data.z.val );
-         
-         // Decide which way to turn
-         if(angle > 40){
-            // Increase turn
-            DEBUG_PRINT( "\nIncrease Turn: Right?\n\n");
-            turn += dspeed;
-         }else if( angle < -40){
-            // Decrease turn
-            DEBUG_PRINT( "\nDecrease Turn: Right?\n\n");
-            turn -= dspeed;
-         }else{
-            turn = 0;
-         }
-            
+   // Find Angle from north to set turn
+   if( magn.data.x.val < maxNorth){
+      // Calculate offset north
+      int angle = calcNorthOffset( maxNorth, magn.data.x.val, magn.data.y.val, magn.data.z.val );
+      clear2eol();
+      printf("Angle off North: %f\n", angle);
+      int dspeed = 2;
+      // Decide which way to turn
+      if(angle > 20){
+         // Increase turn
+         DEBUG_PRINT( "\nIncrease Turn: Right?\n\n");
+         return dspeed;
+      }else if( angle < -20){
+         // Decrease turn
+         DEBUG_PRINT( "\nDecrease Turn: Right?\n\n");
+         return -dspeed;
       }else{
-         // Stop Motors, North is in Range
-         DEBUG_PRINT( "\nDecrease Turn: Left?\n\n");
-         turn = 0;
+         return -turn;
       }
+      
+   }else{
+      // Stop Motors, North is in Range
+      DEBUG_PRINT( "\nDecrease Turn: Left?\n\n");
+      return -turn;
+   }
 }
