@@ -1,19 +1,18 @@
-# Any command here will be run on startup -Jonathan Frias
-echo "The Beaglebone Black will Self-Destruct in ..."
-sleep(1)
-echo "3..."
-sleep(.5)
-echo "2..."
-sleep(.25)
-echo "1..."
 
-# Now real development
-touch me
+# Any command here will be run on startup -Jonathan Frias
 
 # Mount SD card for data logging
 mount /dev/mmcblk1p2 /root/sdcard
 
+sleep 2
+
 # Enable Devices
-/root/HardwareTest/build
+/root/TestMoveWheelsCode/build.sh
 
+sleep 2
 
+# Reset wifi to ensure reliable connection
+/root/wifi-reset/wifi-reset.sh
+
+# Run program for AppControl
+/root/AppControl/appControl_2

@@ -1,0 +1,2079 @@
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 48 files changed, 10919 insertions(+)
+ create mode 100644 .bash_history
+ create mode 100644 .bashrc
+ create mode 100644 .gem/specs/rubygems.org%80/latest_specs.4.8
+ create mode 100644 .gem/specs/rubygems.org%80/quick/Marshal.4.8/beaglebone-1.1.1.gemspec
+ create mode 100644 .lesshst
+ create mode 100644 .npmrc
+ create mode 100644 .profile
+ create mode 100644 .ssh/authorized_keys
+ create mode 100644 .viminfo
+ create mode 100644 DeviceTree/BB-SPI1-01-00A0.dts
+ create mode 100755 DeviceTree/build
+ create mode 100644 GetData/GetDataCTutorial.c
+ create mode 100644 GetData/L3G.h
+ create mode 100644 GetData/LSM303.h
+ create mode 100755 GetData/a.out
+ create mode 100644 GetData/data.txt
+ create mode 100644 GetData/i2c-dev.h
+ create mode 100755 GetData/main
+ create mode 100644 GetData/main.c
+ create mode 100644 GetData/manualGetDataR2.c
+ create mode 100644 GetData/sensor.c
+ create mode 100644 HardwareTest/HardwareTestR0.c
+ create mode 100644 HardwareTest/HardwareTestR1.c
+ create mode 100644 HardwareTest/RoboClawLib_r0.c
+ create mode 100644 HardwareTest/Sensor_r0.h
+ create mode 100755 HardwareTest/build
+ create mode 100644 HardwareTest/termlib_r0.c
+ create mode 100644 HardwareTest/termlib_r0.h
+ create mode 100755 HardwareTest/testPacketShit
+ create mode 100644 oldGetData/BMA180Accelerometer.cpp
+ create mode 100644 oldGetData/BMA180Accelerometer.h
+ create mode 100644 oldGetData/EasyDriver.cpp
+ create mode 100644 oldGetData/EasyDriver.h
+ create mode 100644 oldGetData/L3GD20Hgyroscope.cpp
+ create mode 100644 oldGetData/L3GD20Hgyroscope.h
+ create mode 100644 oldGetData/README.md
+ create mode 100644 oldGetData/SimpleGPIO.cpp
+ create mode 100644 oldGetData/SimpleGPIO.h
+ create mode 100644 oldGetData/TestApplication.cpp
+ create mode 100755 oldGetData/a.out
+ create mode 100644 oldGetData/asdf.txt
+ create mode 100755 oldGetData/build
+ create mode 100644 oldGetData/data.txt
+ create mode 100644 oldGetData/getDataTest.cpp
+ create mode 100644 oldGetData/jonathan.c
+ create mode 100644 oldGetData/manualGetData.c
+ create mode 100644 oldGetData/manualGetDataR1.c
+ create mode 100644 oldGetData/manualGetDataR2.c
+ create mode 100755 run_on_boot.sh
+ create mode 160000 wifi-reset
+root@beaglebone:~# git status
+# On branch master
+nothing to commit (working directory clean)
+root@beaglebone:~# ls
+DeviceTree  GetData  HardwareTest  oldGetData  run_on_boot.sh  sdcard  wifi-reset
+root@beaglebone:~# vim oldGetData/
+root@beaglebone:~# git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#       modified:   .viminfo
+#       modified:   oldGetData/jonathan.c
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#       .vim/
+no changes added to commit (use "git add" and/or "git commit -a")
+root@beaglebone:~# git ^C
+root@beaglebone:~# r m-rf^C
+root@beaglebone:~# rm -rf .vim
+root@beaglebone:~# git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#       modified:   .viminfo
+#       modified:   oldGetData/jonathan.c
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+root@beaglebone:~# git diff
+diff --git a/.viminfo b/.viminfo
+diff --git a/.viminfo b/.viminfo
+index 96dec9c..8504e57 100644
+--- a/.viminfo
++++ b/.viminfo
+@@ -10,12 +10,15 @@
+ # Last Search Pattern:
+ ~MSle0~/false
+
++# Last Substitute String:
++$
++
+ # Command Line History (newest to oldest):
++:wq
+ :q!
+ :q
+ :q:q::
+ :w
+-:wq
+ :zz
+
+ # Search String History (newest to oldest):
+@@ -30,28 +33,33 @@
+ # Input Line History (newest to oldest):
+
+ # Registers:
++""0    CHAR    0
++       false;
+ "1     LINE    0
+        touch /tmp/a
+ "2     LINE    0
+
+ "q     CHAR    0
+        !qsad<80>kb<80>kb<80>kb^M
+-""-    CHAR    0
++"-     CHAR    0
+        false;
+
+ # File marks:
+-'0  1  13  ~/run_on_boot.sh
+-'1  5  0  ~/run_on_boot.sh
+-'2  24  0  ~/run_on_boot.sh
+-'3  57  0  /usr/local/lib/node_modules/bonescript/index.js
+-'4  19  12  /usr/local/lib/node_modules/bonescript/index.js
+...skipping...
++'7  3  1  ~/root
++'8  15  19  /etc/rc.local
++'9  1  0  /etc/rc.local
+
+ # Jumplist (newest first):
++-'  16  0  ~/oldGetData/jonathan.c
++-'  3  0  ~/oldGetData/jonathan.c
++-'  13  0  ~/oldGetData
+ -'  1  13  ~/run_on_boot.sh
+ -'  2  0  ~/run_on_boot.sh
+ -'  5  0  ~/run_on_boot.sh
+@@ -147,13 +155,16 @@
+ -'  8  0  /home/debian/Desktop/Alejandro/test.c
+ -'  1  0  /home/debian/Desktop/Alejandro/test.c
+ -'  8  0  /home/debian/Desktop/Alejandro/test.c
+--'  1  0  /home/debian/Desktop/Alejandro/test.c
+--'  2  0  ~/.ssh/authorized_keys
+--'  1  0  ~/.ssh/authorized_keys
+--'  3  0  ~/.ssh/authorized_keys
+
+ # History of marks within files (newest to oldest):
+
++> ~/oldGetData/jonathan.c
++       "       16      0
++       ^       16      0
++       .       16      0
++       +       18      0
++       +       16      0
++
+ > ~/run_on_boot.sh
+        "       1       13
+        ^       1       14
+diff --git a/oldGetData/jonathan.c b/oldGetData/jonathan.c
+index 2c66a86..59a5293 100644
+--- a/oldGetData/jonathan.c
++++ b/oldGetData/jonathan.c
+@@ -13,4 +13,6 @@
+ int main() {
+        system ("echo `date +'%s'` - `i2cdump -y 1 0x6b | head -n 4 | tail -n 1
+        //system ("echo `date +'%s'` - `i2cdump -y 1 0x1d | head -n 4 | tail -n
++
+ }
++
+root@beaglebone:~# git ^C
+root@beaglebone:~# rm -rf ^C
+root@beaglebone:~# ^C
+root@beaglebone:~# echo acce `date` - `i2cdump -y 1 0x1d | head -n 4 | tail -n 1 | cut -d ' ' -f 10,11,12,13,14,15` >> accelData.txt
+No size specified (using byte-data access)
+root@beaglebone:~# i2c
+i2cdetect  i2cdump    i2cget     i2cset
+root@beaglebone:~# i2cdump -y 1 0x1d
+No size specified (using byte-data access)
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f    0123456789abcdef
+00: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+10: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+20: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+30: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+40: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+50: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+60: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+70: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+80: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+90: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+a0: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+b0: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+c0: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+d0: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+e0: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+f0: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+root@beaglebone:~# i2cdump -y 1 0x1d
+No size specified (using byte-data access)
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f    0123456789abcdef
+00: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+10: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+20: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+30: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+40: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+50: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+60: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+70: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+80: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+90: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+a0: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+b0: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+c0: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+d0: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+e0: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+f0: XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX    XXXXXXXXXXXXXXXX
+root@beaglebone:~# i2cdump -y 1 0x1d
+No size specified (using byte-data access)
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f    0123456789abcdef
+00: 00 00 00 00 00 00 00 00 c6 fe 31 00 06 06 00 49    ........??1.??.I
+10: 00 00 e8 00 00 00 00 00 00 00 00 00 00 00 00 00    ..?.............
+20: 07 00 00 00 18 20 03 00 8f ba 08 80 08 80 00 20    ?...? ?.??????.
+30: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+40: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+50: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+60: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+70: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+80: 00 00 00 00 00 00 00 00 c6 fe 31 00 06 06 00 49    ........??1.??.I
+90: 00 00 e8 00 00 00 00 00 00 00 00 00 00 00 00 00    ..?.............
+a0: 07 00 00 00 18 20 03 00 8f ba 08 80 08 80 00 20    ?...? ?.??????.
+b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+root@beaglebone:~# i2cdump -y 1 0x1d^C
+root@beaglebone:~# ^C
+root@beaglebone:~# ^C
+root@beaglebone:~# ^C
+root@beaglebone:~# ls
+DeviceTree  GetData  HardwareTest  accelData.txt  oldGetData  run_on_boot.sh  sdcard  wifi-reset
+root@beaglebone:~# cd ^C
+root@beaglebone:~# cd /tmp/
+root@beaglebone:/tmp# ls
+ssh-uJ9QOPm4U1su
+root@beaglebone:/tmp# mkdir tmp-stuff
+root@beaglebone:/tmp# cd tmp-stuff/
+root@beaglebone:/tmp/tmp-stuff# ls
+root@beaglebone:/tmp/tmp-stuff# git clone https://github.com/groeck/i2c-tools.git
+Cloning into 'i2c-tools'...
+remote: Counting objects: 1546, done.
+remote: Total 1546 (delta 0), reused 0 (delta 0)
+Receiving objects: 100% (1546/1546), 405.67 KiB | 715 KiB/s, done.
+Resolving deltas: 100% (989/989), done.
+root@beaglebone:/tmp/tmp-stuff# cd i2c-tools/
+root@beaglebone:/tmp/tmp-stuff/i2c-tools# ls -alh
+total 108K
+drwxr-xr-x 10 root root 4.0K Jan 15 02:21 .
+drwxr-xr-x  3 root root 4.0K Jan 15 02:21 ..
+drwxr-xr-x  8 root root 4.0K Jan 15 02:21 .git
+-rw-r--r--  1 root root 6.5K Jan 15 02:21 CHANGES
+-rw-r--r--  1 root root  18K Jan 15 02:21 COPYING
+-rw-r--r--  1 root root  26K Jan 15 02:21 COPYING.LGPL
+-rw-r--r--  1 root root 1.1K Jan 15 02:21 Makefile
+-rw-r--r--  1 root root 3.1K Jan 15 02:21 README
+drwxr-xr-x  2 root root 4.0K Jan 15 02:21 eeprom
+drwxr-xr-x  2 root root 4.0K Jan 15 02:21 eepromer
+drwxr-xr-x  4 root root 4.0K Jan 15 02:21 include
+drwxr-xr-x  2 root root 4.0K Jan 15 02:21 lib
+drwxr-xr-x  2 root root 4.0K Jan 15 02:21 py-smbus
+drwxr-xr-x  2 root root 4.0K Jan 15 02:21 stub
+drwxr-xr-x  2 root root 4.0K Jan 15 02:21 tools
+-rw-r--r--  1 root root   24 Jan 15 02:21 version.h
+root@beaglebone:/tmp/tmp-stuff/i2c-tools# vim .
+root@beaglebone:/tmp/tmp-stuff/i2c-tools# find . | grep i2cdumpc
+root@beaglebone:/tmp/tmp-stuff/i2c-tools# find .
+.
+./CHANGES
+./include
+./include/linux
+./include/linux/i2c-dev.h
+./include/Module.mk
+./include/i2c
+./include/i2c/smbus.h
+./Makefile
+./version.h
+./eeprom
+./eeprom/ddcmon
+./eeprom/decode-dimms.1
+./eeprom/decode-vaio
+./eeprom/README
+./eeprom/decode-dimms
+./eeprom/Module.mk
+./eeprom/decode-edid
+./eeprom/decode-vaio.1
+./COPYING.LGPL
+./stub
+./stub/i2c-stub-from-dump
+./stub/Module.mk
+./stub/i2c-stub-from-dump.8
+./COPYING
+./README
+./py-smbus
+./py-smbus/README
+./py-smbus/smbusmodule.c
+./py-smbus/setup.py
+./py-smbus/Module.mk
+./eepromer
+./eepromer/README.eeprom
+./eepromer/Makefile
+./eepromer/README.eepromer
+./eepromer/README
+./eepromer/eeprog.8
+./eepromer/eepromer.c
+./eepromer/eeprog.c
+./eepromer/eeprom.8
+./eepromer/eeprom.c
+./eepromer/24cXX.h
+./eepromer/24cXX.c
+./eepromer/eepromer.8
+./eepromer/README.eeprog
+./.git
+./.git/objects
+./.git/objects/info
+./.git/objects/pack
+./.git/objects/pack/pack-fb14909b2ed9c4ef7cda09ab1b0c6ed1ca1d22b1.pack
+./.git/objects/pack/pack-fb14909b2ed9c4ef7cda09ab1b0c6ed1ca1d22b1.idx
+./.git/info
+./.git/info/exclude
+./.git/hooks
+./.git/hooks/applypatch-msg.sample
+./.git/hooks/update.sample
+./.git/hooks/pre-rebase.sample
+./.git/hooks/prepare-commit-msg.sample
+./.git/hooks/post-update.sample
+./.git/hooks/pre-commit.sample
+./.git/hooks/pre-applypatch.sample
+./.git/hooks/commit-msg.sample
+./.git/index
+./.git/config
+./.git/refs
+./.git/refs/heads
+./.git/refs/heads/master
+./.git/refs/remotes
+./.git/refs/remotes/origin
+./.git/refs/remotes/origin/HEAD
+./.git/refs/tags
+./.git/branches
+./.git/HEAD
+./.git/packed-refs
+./.git/description
+./.git/logs
+./.git/logs/refs
+./.git/logs/refs/heads
+./.git/logs/refs/heads/master
+./.git/logs/refs/remotes
+./.git/logs/refs/remotes/origin
+./.git/logs/refs/remotes/origin/HEAD
+./.git/logs/HEAD
+./lib
+./lib/smbus.c
+./lib/Module.mk
+./lib/libi2c.map
+./tools
+./tools/i2cdetect.8
+./tools/i2cset.8
+./tools/i2cdetect.c
+./tools/util.c
+./tools/i2cset.c
+./tools/util.h
+./tools/i2cdump.8
+./tools/i2cget.8
+./tools/i2cbusses.c
+./tools/i2cget.c
+./tools/i2cdump.c
+./tools/i2cbusses.h
+./tools/Module.mk
+root@beaglebone:/tmp/tmp-stuff/i2c-tools# cd ./tools/i2c
+i2cbusses.c  i2cbusses.h  i2cdetect.8  i2cdetect.c  i2cdump.8    i2cdump.c    i2cget.8     i2cget.c     i2cset.8     i2cset.c
+root@beaglebone:/tmp/tmp-stuff/i2c-tools# cd ./tools/
+root@beaglebone:/tmp/tmp-stuff/i2c-tools/tools# ls
+Module.mk  i2cbusses.c  i2cbusses.h  i2cdetect.8  i2cdetect.c  i2cdump.8  i2cdump.c  i2cget.8  i2cget.c  i2cset.8  i2cset.c  util.c  util.h
+root@beaglebone:/tmp/tmp-stuff/i2c-tools/tools# cat i2cdump.c
+/*
+    i2cdump.c - a user-space program to dump I2C registers
+    Copyright (C) 2002-2003  Frodo Looijaard <frodol@dds.nl>, and
+                             Mark D. Studebaker <mdsxyz123@yahoo.com>
+    Copyright (C) 2004-2012  Jean Delvare <jdelvare@suse.de>
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+    MA 02110-1301 USA.
+*/
+
+#include <sys/ioctl.h>
+#include <errno.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <linux/i2c.h>
+#include <linux/i2c-dev.h>
+#include <i2c/smbus.h>
+#include "i2cbusses.h"
+#include "util.h"
+#include "../version.h"
+
+static void help(void)
+{
+        fprintf(stderr,
+                "Usage: i2cdump [-f] [-y] [-r first-last] I2CBUS ADDRESS [MODE [BANK [BANKREG]]]\n"
+                "  I2CBUS is an integer or an I2C bus name\n"
+                "  ADDRESS is an integer (0x03 - 0x77)\n"
+                "  MODE is one of:\n"
+                "    b (byte, default)\n"
+                "    w (word)\n"
+                "    W (word on even register addresses)\n"
+                "    s (SMBus block)\n"
+                "    i (I2C block)\n"
+                "    c (consecutive byte)\n"
+                "    Append p for SMBus PEC\n");
+}
+
+static int check_funcs(int file, int size, int pec)
+{
+        unsigned long funcs;
+
+        /* check adapter functionality */
+        if (ioctl(file, I2C_FUNCS, &funcs) < 0) {
+                fprintf(stderr, "Error: Could not get the adapter "
+                        "functionality matrix: %s\n", strerror(errno));
+                return -1;
+        }
+
+        switch(size) {
+        case I2C_SMBUS_BYTE:
+                if (!(funcs & I2C_FUNC_SMBUS_READ_BYTE)) {
+                        fprintf(stderr, MISSING_FUNC_FMT, "SMBus receive byte");
+                        return -1;
+                }
+                if (!(funcs & I2C_FUNC_SMBUS_WRITE_BYTE)) {
+                        fprintf(stderr, MISSING_FUNC_FMT, "SMBus send byte");
+                        return -1;
+                }
+                break;
+
+        case I2C_SMBUS_BYTE_DATA:
+                if (!(funcs & I2C_FUNC_SMBUS_READ_BYTE_DATA)) {
+                        fprintf(stderr, MISSING_FUNC_FMT, "SMBus read byte");
+                        return -1;
+                }
+                break;
+
+        case I2C_SMBUS_WORD_DATA:
+                if (!(funcs & I2C_FUNC_SMBUS_READ_WORD_DATA)) {
+                        fprintf(stderr, MISSING_FUNC_FMT, "SMBus read word");
+                        return -1;
+                }
+                break;
+
+        case I2C_SMBUS_BLOCK_DATA:
+                if (!(funcs & I2C_FUNC_SMBUS_READ_BLOCK_DATA)) {
+                        fprintf(stderr, MISSING_FUNC_FMT, "SMBus block read");
+                        return -1;
+                }
+                break;
+
+        case I2C_SMBUS_I2C_BLOCK_DATA:
+                if (!(funcs & I2C_FUNC_SMBUS_READ_I2C_BLOCK)) {
+                        fprintf(stderr, MISSING_FUNC_FMT, "I2C block read");
+                        return -1;
+                }
+                break;
+        }
+
+        if (pec
+         && !(funcs & (I2C_FUNC_SMBUS_PEC | I2C_FUNC_I2C))) {
+                fprintf(stderr, "Warning: Adapter does "
+                        "not seem to support PEC\n");
+        }
+
+        return 0;
+}
+
+int main(int argc, char *argv[])
+{
+        char *end;
+        int i, j, res, i2cbus, address, size, file;
+        int bank = 0, bankreg = 0x4E, old_bank = 0;
+        char filename[20];
+        int block[256], s_length = 0;
+        int pec = 0, even = 0;
+        int flags = 0;
+        int force = 0, yes = 0, version = 0;
+        const char *range = NULL;
+        int first = 0x00, last = 0xff;
+
+        /* handle (optional) flags first */
+        while (1+flags < argc && argv[1+flags][0] == '-') {
+                switch (argv[1+flags][1]) {
+                case 'V': version = 1; break;
+                case 'f': force = 1; break;
+                case 'r': range = argv[1+(++flags)]; break;
+                case 'y': yes = 1; break;
+                default:
+                        fprintf(stderr, "Error: Unsupported option "
+                                "\"%s\"!\n", argv[1+flags]);
+                        help();
+                        exit(1);
+                }
+                flags++;
+        }
+
+        if (version) {
+                fprintf(stderr, "i2cdump version %s\n", VERSION);
+                exit(0);
+        }
+
+        if (argc < flags + 2) {
+                fprintf(stderr, "Error: No i2c-bus specified!\n");
+                help();
+                exit(1);
+        }
+        i2cbus = lookup_i2c_bus(argv[flags+1]);
+        if (i2cbus < 0) {
+                help();
+                exit(1);
+        }
+
+        if (argc < flags + 3) {
+                fprintf(stderr, "Error: No address specified!\n");
+                help();
+                exit(1);
+        }
+        address = parse_i2c_address(argv[flags+2]);
+        if (address < 0) {
+                help();
+                exit(1);
+        }
+
+        if (argc < flags + 4) {
+                fprintf(stderr, "No size specified (using byte-data access)\n");
+                size = I2C_SMBUS_BYTE_DATA;
+        } else if (!strncmp(argv[flags+3], "b", 1)) {
+                size = I2C_SMBUS_BYTE_DATA;
+                pec = argv[flags+3][1] == 'p';
+        } else if (!strncmp(argv[flags+3], "w", 1)) {
+                size = I2C_SMBUS_WORD_DATA;
+                pec = argv[flags+3][1] == 'p';
+        } else if (!strncmp(argv[flags+3], "W", 1)) {
+                size = I2C_SMBUS_WORD_DATA;
+                even = 1;
+        } else if (!strncmp(argv[flags+3], "s", 1)) {
+                size = I2C_SMBUS_BLOCK_DATA;
+                pec = argv[flags+3][1] == 'p';
+        } else if (!strncmp(argv[flags+3], "c", 1)) {
+                size = I2C_SMBUS_BYTE;
+                pec = argv[flags+3][1] == 'p';
+        } else if (!strcmp(argv[flags+3], "i"))
+                size = I2C_SMBUS_I2C_BLOCK_DATA;
+        else {
+                fprintf(stderr, "Error: Invalid mode!\n");
+                help();
+                exit(1);
+        }
+
+        if (argc > flags + 4) {
+                bank = strtol(argv[flags+4], &end, 0);
+                if (*end || size == I2C_SMBUS_I2C_BLOCK_DATA) {
+                        fprintf(stderr, "Error: Invalid bank number!\n");
+                        help();
+                        exit(1);
+                }
+                if ((size == I2C_SMBUS_BYTE_DATA || size == I2C_SMBUS_WORD_DATA)
+                 && (bank < 0 || bank > 15)) {
+                        fprintf(stderr, "Error: bank out of range!\n");
+                        help();
+                        exit(1);
+                }
+                if (size == I2C_SMBUS_BLOCK_DATA
+                 && (bank < 0 || bank > 0xff)) {
+                        fprintf(stderr, "Error: block command out of range!\n");
+                        help();
+                        exit(1);
+                }
+
+                if (argc > flags + 5) {
+                        bankreg = strtol(argv[flags+5], &end, 0);
+                        if (*end || size == I2C_SMBUS_BLOCK_DATA) {
+                                fprintf(stderr, "Error: Invalid bank register "
+                                        "number!\n");
+                                help();
+                                exit(1);
+                        }
+                        if (bankreg < 0 || bankreg > 0xff) {
+                                fprintf(stderr, "Error: bank out of range "
+                                        "(0-0xff)!\n");
+                                help();
+                                exit(1);
+                        }
+                }
+        }
+
+        /* Parse optional range string */
+        if (range) {
+                char *dash;
+
+                first = strtol(range, &dash, 0);
+                if (dash == range || *dash != '-'
+                 || first < 0 || first > 0xff) {
+                        fprintf(stderr, "Error: Invalid range parameter!\n");
+                        exit(1);
+                }
+                last = strtol(++dash, &end, 0);
+                if (end == dash || *end != '\0'
+                 || last < first || last > 0xff) {
+                        fprintf(stderr, "Error: Invalid range parameter!\n");
+                        exit(1);
+                }
+
+                /* Check mode constraints */
+                switch (size) {
+                case I2C_SMBUS_BYTE:
+                case I2C_SMBUS_BYTE_DATA:
+                        break;
+                case I2C_SMBUS_WORD_DATA:
+                        if (!even || (!(first%2) && last%2))
+                                break;
+                        /* Fall through */
+                default:
+                        fprintf(stderr,
+                                "Error: Range parameter not compatible with selected mode!\n");
+                        exit(1);
+                }
+        }
+
+        file = open_i2c_dev(i2cbus, filename, sizeof(filename), 0);
+        if (file < 0
+         || check_funcs(file, size, pec)
+         || set_slave_addr(file, address, force))
+                exit(1);
+
+        if (pec) {
+                if (ioctl(file, I2C_PEC, 1) < 0) {
+                        fprintf(stderr, "Error: Could not set PEC: %s\n",
+                                strerror(errno));
+                        exit(1);
+                }
+        }
+
+        if (!yes) {
+                fprintf(stderr, "WARNING! This program can confuse your I2C "
+                        "bus, cause data loss and worse!\n");
+
+                fprintf(stderr, "I will probe file %s, address 0x%x, mode "
+                        "%s\n", filename, address,
+                        size == I2C_SMBUS_BLOCK_DATA ? "smbus block" :
+                        size == I2C_SMBUS_I2C_BLOCK_DATA ? "i2c block" :
+                        size == I2C_SMBUS_BYTE ? "byte consecutive read" :
+                        size == I2C_SMBUS_BYTE_DATA ? "byte" : "word");
+                if (pec)
+                        fprintf(stderr, "PEC checking enabled.\n");
+                if (even)
+                        fprintf(stderr, "Only probing even register "
+                                "addresses.\n");
+                if (bank) {
+                        if (size == I2C_SMBUS_BLOCK_DATA)
+                                fprintf(stderr, "Using command 0x%02x.\n",
+                                        bank);
+                        else
+                                fprintf(stderr, "Probing bank %d using bank "
+                                        "register 0x%02x.\n", bank, bankreg);
+                }
+                if (range) {
+                        fprintf(stderr,
+                                "Probe range limited to 0x%02x-0x%02x.\n",
+                                first, last);
+                }
+
+                fprintf(stderr, "Continue? [Y/n] ");
+                fflush(stderr);
+                if (!user_ack(1)) {
+                        fprintf(stderr, "Aborting on user request.\n");
+                        exit(0);
+                }
+        }
+
+        /* See Winbond w83781d data sheet for bank details */
+        if (bank && size != I2C_SMBUS_BLOCK_DATA) {
+                res = i2c_smbus_read_byte_data(file, bankreg);
+                if (res >= 0) {
+                        old_bank = res;
+                        res = i2c_smbus_write_byte_data(file, bankreg,
+                                bank | (old_bank & 0xf0));
+                }
+                if (res < 0) {
+                        fprintf(stderr, "Error: Bank switching failed\n");
+                        exit(1);
+                }
+        }
+
+        /* handle all but word data */
+        if (size != I2C_SMBUS_WORD_DATA || even) {
+                /* do the block transaction */
+                if (size == I2C_SMBUS_BLOCK_DATA
+                 || size == I2C_SMBUS_I2C_BLOCK_DATA) {
+                        unsigned char cblock[288];
+
+                        if (size == I2C_SMBUS_BLOCK_DATA) {
+                                res = i2c_smbus_read_block_data(file, bank,
+                                      cblock);
+                                /* Remember returned block length for a nicer
+                                   display later */
+                                s_length = res;
+                        } else {
+                                for (res = 0; res < 256; res += i) {
+                                        i = i2c_smbus_read_i2c_block_data(file,
+                                                res, 32, cblock + res);
+                                        if (i <= 0) {
+                                                res = i;
+                                                break;
+                                        }
+                                }
+                        }
+                        if (res <= 0) {
+                                fprintf(stderr, "Error: Block read failed, "
+                                        "return code %d\n", res);
+                                exit(1);
+                        }
+                        if (res >= 256)
+                                res = 256;
+                        for (i = 0; i < res; i++)
+                                block[i] = cblock[i];
+                        if (size != I2C_SMBUS_BLOCK_DATA)
+                                for (i = res; i < 256; i++)
+                                        block[i] = -1;
+                }
+
+                if (size == I2C_SMBUS_BYTE) {
+                        res = i2c_smbus_write_byte(file, first);
+                        if(res != 0) {
+                                fprintf(stderr, "Error: Write start address "
+                                        "failed, return code %d\n", res);
+                                exit(1);
+                        }
+                }
+
+                printf("     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f"
+                       "    0123456789abcdef\n");
+                for (i = 0; i < 256; i+=16) {
+                        if (size == I2C_SMBUS_BLOCK_DATA && i >= s_length)
+                                break;
+                        if (i/16 < first/16)
+                                continue;
+                        if (i/16 > last/16)
+                                break;
+
+                        printf("%02x: ", i);
+                        for (j = 0; j < 16; j++) {
+                                fflush(stdout);
+                                /* Skip unwanted registers */
+                                if (i+j < first || i+j > last) {
+                                        printf("   ");
+                                        if (size == I2C_SMBUS_WORD_DATA) {
+                                                printf("   ");
+                                                j++;
+                                        }
+                                        continue;
+                                }
+
+                                if (size == I2C_SMBUS_BYTE_DATA) {
+                                        block[i+j] = res =
+                                          i2c_smbus_read_byte_data(file, i+j);
+                                } else if (size == I2C_SMBUS_WORD_DATA) {
+                                        res = i2c_smbus_read_word_data(file,
+                                                                       i+j);
+                                        if (res < 0) {
+                                                block[i+j] = res;
+                                                block[i+j+1] = res;
+                                        } else {
+                                                block[i+j] = res & 0xff;
+                                                block[i+j+1] = res >> 8;
+                                        }
+                                } else if (size == I2C_SMBUS_BYTE) {
+                                        block[i+j] = res =
+                                          i2c_smbus_read_byte(file);
+                                } else
+                                        res = block[i+j];
+
+                                if (size == I2C_SMBUS_BLOCK_DATA
+                                 && i+j >= s_length) {
+                                        printf("   ");
+                                } else if (res < 0) {
+                                        printf("XX ");
+                                        if (size == I2C_SMBUS_WORD_DATA)
+                                                printf("XX ");
+                                } else {
+                                        printf("%02x ", block[i+j]);
+                                        if (size == I2C_SMBUS_WORD_DATA)
+                                                printf("%02x ", block[i+j+1]);
+                                }
+                                if (size == I2C_SMBUS_WORD_DATA)
+                                        j++;
+                        }
+                        printf("   ");
+
+                        for (j = 0; j < 16; j++) {
+                                if (size == I2C_SMBUS_BLOCK_DATA
+                                 && i+j >= s_length)
+                                        break;
+                                /* Skip unwanted registers */
+                                if (i+j < first || i+j > last) {
+                                        printf(" ");
+                                        continue;
+                                }
+
+                                res = block[i+j];
+                                if (res < 0)
+                                        printf("X");
+                                else
+                                if ((res & 0xff) == 0x00
+                                 || (res & 0xff) == 0xff)
+                                        printf(".");
+                                else
+                                if ((res & 0xff) < 32
+                                 || (res & 0xff) >= 127)
+                                        printf("?");
+                                else
+                                        printf("%c", res & 0xff);
+                        }
+                        printf("\n");
+                }
+        } else {
+                printf("     0,8  1,9  2,a  3,b  4,c  5,d  6,e  7,f\n");
+                for (i = 0; i < 256; i+=8) {
+                        if (i/8 < first/8)
+                                continue;
+                        if (i/8 > last/8)
+                                break;
+
+                        printf("%02x: ", i);
+                        for (j = 0; j < 8; j++) {
+                                /* Skip unwanted registers */
+                                if (i+j < first || i+j > last) {
+                                        printf("     ");
+                                        continue;
+                                }
+
+                                res = i2c_smbus_read_word_data(file, i+j);
+                                if (res < 0)
+                                        printf("XXXX ");
+                                else
+                                        printf("%04x ", res & 0xffff);
+                        }
+                        printf("\n");
+                }
+        }
+        if (bank && size != I2C_SMBUS_BLOCK_DATA) {
+                i2c_smbus_write_byte_data(file, bankreg, old_bank);
+        }
+        exit(0);
+}
+root@beaglebone:/tmp/tmp-stuff/i2c-tools/tools# cat i2cdump.c  | wc -l
+490
+root@beaglebone:/tmp/tmp-stuff/i2c-tools/tools# clear
+root@beaglebone:/tmp/tmp-stuff/i2c-tools/tools# make
+make: *** No targets specified and no makefile found.  Stop.
+root@beaglebone:/tmp/tmp-stuff/i2c-tools/tools# cd ../../
+root@beaglebone:/tmp/tmp-stuff# ls
+i2c-tools
+root@beaglebone:/tmp/tmp-stuff# cd i2c-tools/
+root@beaglebone:/tmp/tmp-stuff/i2c-tools# ls
+CHANGES  COPYING  COPYING.LGPL  Makefile  README  eeprom  eepromer  include  lib  py-smbus  stub  tools  version.h
+root@beaglebone:/tmp/tmp-stuff/i2c-tools# make
+cc -fpic -D_REENTRANT -O2 -Wall -Wstrict-prototypes -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align -Wwrite-strings -Wnested-externs -Winline -W -Wundef -Wmissing-prototypes -Iinclude -c lib/smbus.c -o lib/smbus.o
+cc -shared  -Wl,--version-script=lib/libi2c.map -Wl,-soname,libi2c.so.0 -o lib/libi2c.so.0.1.0 lib/smbus.o -lc
+cc -O2 -Wall -Wstrict-prototypes -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align -Wwrite-strings -Wnested-externs -Winline -W -Wundef -Wmissing-prototypes -Iinclude -c lib/smbus.c -o lib/smbus.ao
+rm -f lib/libi2c.a
+ar rcvs lib/libi2c.a lib/smbus.ao
+a - lib/smbus.ao
+rm -f lib/libi2c.so.0
+ln -sf libi2c.so.0.1.0 lib/libi2c.so.0
+rm -f lib/libi2c.so
+ln -sf libi2c.so.0.1.0 lib/libi2c.so
+cc -O2 -Wall -Wstrict-prototypes -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align -Wwrite-strings -Wnested-externs -Winline -W -Wundef -Wmissing-prototypes -Iinclude -c tools/i2cdetect.c -o tools/i2cdetect.o
+cc -O2 -Wall -Wstrict-prototypes -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align -Wwrite-strings -Wnested-externs -Winline -W -Wundef -Wmissing-prototypes -Iinclude -c tools/i2cbusses.c -o tools/i2cbusses.o
+cc  -o tools/i2cdetect tools/i2cdetect.o tools/i2cbusses.o -Llib -li2c
+cc -O2 -Wall -Wstrict-prototypes -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align -Wwrite-strings -Wnested-externs -Winline -W -Wundef -Wmissing-prototypes -Iinclude -c tools/i2cdump.c -o tools/i2cdump.o
+cc -O2 -Wall -Wstrict-prototypes -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align -Wwrite-strings -Wnested-externs -Winline -W -Wundef -Wmissing-prototypes -Iinclude -c tools/util.c -o tools/util.o
+cc  -o tools/i2cdump tools/i2cdump.o tools/i2cbusses.o tools/util.o  -Llib -li2c
+cc -O2 -Wall -Wstrict-prototypes -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align -Wwrite-strings -Wnested-externs -Winline -W -Wundef -Wmissing-prototypes -Iinclude -c tools/i2cset.c -o tools/i2cset.o
+cc  -o tools/i2cset tools/i2cset.o tools/i2cbusses.o tools/util.o -Llib -li2c
+cc -O2 -Wall -Wstrict-prototypes -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align -Wwrite-strings -Wnested-externs -Winline -W -Wundef -Wmissing-prototypes -Iinclude -c tools/i2cget.c -o tools/i2cget.o
+cc  -o tools/i2cget tools/i2cget.o tools/i2cbusses.o tools/util.o -Llib -li2c
+root@beaglebone:/tmp/tmp-stuff/i2c-tools# lsd ^C
+root@beaglebone:/tmp/tmp-stuff/i2c-tools# ls -alh
+total 108K
+drwxr-xr-x 10 root root 4.0K Jan 15 02:21 .
+drwxr-xr-x  3 root root 4.0K Jan 15 02:21 ..
+drwxr-xr-x  8 root root 4.0K Jan 15 02:21 .git
+-rw-r--r--  1 root root 6.5K Jan 15 02:21 CHANGES
+-rw-r--r--  1 root root  18K Jan 15 02:21 COPYING
+-rw-r--r--  1 root root  26K Jan 15 02:21 COPYING.LGPL
+-rw-r--r--  1 root root 1.1K Jan 15 02:21 Makefile
+-rw-r--r--  1 root root 3.1K Jan 15 02:21 README
+drwxr-xr-x  2 root root 4.0K Jan 15 02:21 eeprom
+drwxr-xr-x  2 root root 4.0K Jan 15 02:21 eepromer
+drwxr-xr-x  4 root root 4.0K Jan 15 02:21 include
+drwxr-xr-x  2 root root 4.0K Jan 15 02:22 lib
+drwxr-xr-x  2 root root 4.0K Jan 15 02:21 py-smbus
+drwxr-xr-x  2 root root 4.0K Jan 15 02:21 stub
+drwxr-xr-x  2 root root 4.0K Jan 15 02:22 tools
+-rw-r--r--  1 root root   24 Jan 15 02:21 version.h
+root@beaglebone:/tmp/tmp-stuff/i2c-tools# cd ./tools/
+Module.mk    i2cbusses.h  i2cdetect    i2cdetect.c  i2cdump      i2cdump.c    i2cget       i2cget.c     i2cset       i2cset.c     util.c       util.o
+i2cbusses.c  i2cbusses.o  i2cdetect.8  i2cdetect.o  i2cdump.8    i2cdump.o    i2cget.8     i2cget.o     i2cset.8     i2cset.o     util.h
+root@beaglebone:/tmp/tmp-stuff/i2c-tools# cd ./tools/
+Module.mk    i2cbusses.h  i2cdetect    i2cdetect.c  i2cdump      i2cdump.c    i2cget       i2cget.c     i2cset       i2cset.c     util.c       util.o
+i2cbusses.c  i2cbusses.o  i2cdetect.8  i2cdetect.o  i2cdump.8    i2cdump.o    i2cget.8     i2cget.o     i2cset.8     i2cset.o     util.h
+root@beaglebone:/tmp/tmp-stuff/i2c-tools# cd ./tools/
+root@beaglebone:/tmp/tmp-stuff/i2c-tools/tools# ls
+Module.mk    i2cbusses.h  i2cdetect    i2cdetect.c  i2cdump    i2cdump.c  i2cget    i2cget.c  i2cset    i2cset.c  util.c  util.o
+i2cbusses.c  i2cbusses.o  i2cdetect.8  i2cdetect.o  i2cdump.8  i2cdump.o  i2cget.8  i2cget.o  i2cset.8  i2cset.o  util.h
+root@beaglebone:/tmp/tmp-stuff/i2c-tools/tools# vim i2cdump.c
+root@beaglebone:/tmp/tmp-stuff/i2c-tools/tools# vim id^C
+root@beaglebone:/tmp/tmp-stuff/i2c-tools/tools# ^C
+root@beaglebone:/tmp/tmp-stuff/i2c-tools/tools# c^C
+root@beaglebone:/tmp/tmp-stuff/i2c-tools/tools# vim i2cdump.c
+root@beaglebone:/tmp/tmp-stuff/i2c-tools/tools# ls
+Module.mk    i2cbusses.h  i2cdetect    i2cdetect.c  i2cdump    i2cdump.c  i2cget    i2cget.c  i2cset    i2cset.c  util.c  util.o
+i2cbusses.c  i2cbusses.o  i2cdetect.8  i2cdetect.o  i2cdump.8  i2cdump.o  i2cget.8  i2cget.o  i2cset.8  i2cset.o  util.h
+root@beaglebone:/tmp/tmp-stuff/i2c-tools/tools# cd
+root@beaglebone:~# ls
+DeviceTree  GetData  HardwareTest  accelData.txt  oldGetData  run_on_boot.sh  sdcard  wifi-reset
+root@beaglebone:~# vim run_on_boot.sh n
+2 files to edit
+root@beaglebone:~# catr ^C
+root@beaglebone:~# cat run_on_boot.sh
+
+# Any command here will be run on startup -Jonathan Frias
+
+# Mount SD card for data logging
+mount /dev/mmcblk1p2 /root/sdcard
+
+# Enable Devices
+/root/HardwareTest/build
+
+/root/
+root@beaglebone:~# ls ^C
+root@beaglebone:~# ls -alh
+total 88K
+drwx------ 12 root   root  4.0K Jan 15 02:51 .
+drwxr-xr-x 22 root   root  4.0K Apr 23  2014 ..
+-rw-------  1 root   root  6.4K Jan 15 02:36 .bash_history
+-rw-r--r--  1 root   root   570 Jan 31  2010 .bashrc
+drwxr-xr-x  3 root   root  4.0K Apr 23  2014 .gem
+drwxr-xr-x  8 root   root  4.0K Jan 15 02:15 .git
+-rw-------  1 root   root    53 Dec  2 03:30 .lesshst
+-rw-------  1 debian admin  119 Apr 23  2014 .npmrc
+-rw-r--r--  1 root   root   142 Apr 23  2014 .profile
+drwxr-xr-x  2 root   root  4.0K Dec  1 23:23 .ssh
+drwxr-xr-x  2 root   root  4.0K Jan 15 02:21 .vim
+-rw-------  1 root   root  6.2K Jan 15 02:51 .viminfo
+drwxr-xr-x  2 root   root  4.0K Apr 24  2014 DeviceTree
+drwxr-xr-x  2 root   root  4.0K Jan 14 00:03 GetData
+drwxr-xr-x  2 root   root  4.0K Jan 13 21:58 HardwareTest
+-rw-r--r--  1 root   root    54 Jan 15 02:16 accelData.txt
+drwxr-xr-x  2 root   root  4.0K Jan 15 02:14 oldGetData
+-rwxr-xr-x  1 root   root   178 Jan 15 02:51 run_on_boot.sh
+drwxr-xr-x  2 root   root  4.0K Dec  2 01:00 sdcard
+drwxr-xr-x  3 root   root  4.0K Nov 15 20:58 wifi-reset
+root@beaglebone:~# cat GetData/
+cat: GetData/: Is a directory
+root@beaglebone:~# cat GetData/
+GetDataCTutorial.c  LSM303.h            data.txt            main                manualGetDataR2.c
+L3G.h               a.out               i2c-dev.h           main.c              sensor.c
+root@beaglebone:~# cat GetData/
+GetDataCTutorial.c  LSM303.h            data.txt            main                manualGetDataR2.c
+L3G.h               a.out               i2c-dev.h           main.c              sensor.c
+root@beaglebone:~# cat GetData/manualGetDataR2.c
+
+#include <stdlib.h>
+#include <fcntl.h>
+#include <fcntl.h>
+#include <linux/i2c.h>
+#include <linux/i2c-dev.h>
+#include <sys/ioctl.h>
+#include <stdio.h>
+#include <termios.h>
+#include <math.h>
+#include <errno.h>
+#include <time.h>
+
+int main() {
+        //  Turn on sensors
+        //system ("i2cset -y 1 0x6b 0x20 0x0f");        // Turn on gyro
+        //system ("i2cset -y 1 0x1d 0x20 0xA7");        // Turn on accelerometer and set to 100Hz (table 36)
+        //system ("i2cset 1 0x1d 0x");  // Turn on magnetometer
+
+                system ("echo sensor set");
+        //  Configure sensors - this will be decided on later
+        //      things such as turning on the filters (decreasing sensitivity)
+
+
+        int t = 0;
+        while(t <= 5000){
+        system ("echo gyro `date` - `i2cdump -y 1 0x6b | head -n 4 | tail -n 1 | cut -d ' ' -f 8,9,10,11,12,13,14,15` >> gyroData.txt");
+        //system ("echo acce `date` - `i2cdump -y 1 0x1d | head -n 4 | tail -n 1 | cut -d ' ' -f 10,11,12,13,14,15` >> accelData.txt");
+        t++;
+        }
+}
+//  12/1/14 Liz and Frias did all this crap.
+//      need to find out what to write to set accelerometer and magnetometer as well
+//      as where cut and to read the bytes for both.
+//      check and see if this is actually writing to a file.
+root@beaglebone:~# echo `pwd` GetData/manualGetDataR2.c
+/root GetData/manualGetDataR2.c
+root@beaglebone:~# ls
+DeviceTree  GetData  HardwareTest  accelData.txt  oldGetData  run_on_boot.sh  sdcard  wifi-reset
+root@beaglebone:~# cd^C
+root@beaglebone:~# vim ^C
+root@beaglebone:~# cd GetData/
+root@beaglebone:~/GetData# ls
+GetDataCTutorial.c  L3G.h  LSM303.h  a.out  data.txt  i2c-dev.h  main  main.c  manualGetDataR2.c  sensor.c
+root@beaglebone:~/GetData# vim manualGetDataR2.c
+root@beaglebone:~/GetData# cc manualGetDataR2.c
+In file included from manualGetDataR2.c:6:0:
+/usr/include/linux/i2c-dev.h:38:8: error: redefinition of 'struct i2c_msg'
+/usr/include/linux/i2c.h:67:8: note: originally defined here
+/usr/include/linux/i2c-dev.h:90:7: error: redefinition of 'union i2c_smbus_data'
+/usr/include/linux/i2c.h:125:7: note: originally defined here
+root@beaglebone:~/GetData# gcc manualGetDataR2.c
+In file included from manualGetDataR2.c:6:0:
+/usr/include/linux/i2c-dev.h:38:8: error: redefinition of 'struct i2c_msg'
+/usr/include/linux/i2c.h:67:8: note: originally defined here
+/usr/include/linux/i2c-dev.h:90:7: error: redefinition of 'union i2c_smbus_data'
+/usr/include/linux/i2c.h:125:7: note: originally defined here
+root@beaglebone:~/GetData# vim ^C
+root@beaglebone:~/GetData# cd /usr/include/lin
+link.h  linux/
+root@beaglebone:~/GetData# cd /usr/include/lin
+link.h  linux/
+root@beaglebone:~/GetData# cd /usr/include/lin
+-bash: cd: /usr/include/lin: No such file or directory
+root@beaglebone:~/GetData# cd /usr/include/linux/
+root@beaglebone:/usr/include/linux# ls
+acct.h             cciss_ioctl.h       filter.h              if_packet.h          keyboard.h          nfc.h          reboot.h           timex.h
+adb.h              cdk.h               firewire-cdev.h       if_phonet.h          keyctl.h            nfs.h          reiserfs_fs.h      tiocl.h
+adfs_fs.h          cdrom.h             firewire-constants.h  if_plip.h            l2tp.h              nfs2.h         reiserfs_xattr.h   tipc.h
+affs_hardblocks.h  cgroupstats.h       flat.h                if_ppp.h             limits.h            nfs3.h         resource.h         tipc_config.h
+agpgart.h          chio.h              fs.h                  if_pppol2tp.h        llc.h               nfs4.h         rfkill.h           toshiba.h
+aio_abi.h          cm4000_cs.h         fsl_hypervisor.h      if_pppox.h           loop.h              nfs4_mount.h   romfs_fs.h         tty.h
+apm_bios.h         cn_proc.h           fuse.h                if_slip.h            lp.h                nfs_fs.h       rose.h             types.h
+arcfb.h            coda.h              futex.h               if_strip.h           magic.h             nfs_idmap.h    route.h            udf_fs_i.h
+atalk.h            coda_psdev.h        gameport.h            if_tr.h              major.h             nfs_mount.h    rtc.h              udp.h
+atm.h              coff.h              gen_stats.h           if_tun.h             map_to_7segment.h   nfsacl.h       rtnetlink.h        uinput.h
+atm_eni.h          comstats.h          generic_serial.h      if_tunnel.h          matroxfb.h          nfsd           scc.h              uio.h
+atm_he.h           connector.h         genetlink.h           if_vlan.h            media.h             nl80211.h      sched.h            ultrasound.h
+atm_idt77105.h     const.h             gfs2_ondisk.h         if_x25.h             mempolicy.h         nubus.h        screen_info.h      un.h
+atm_nicstar.h      cramfs_fs.h         gigaset_dev.h         igmp.h               meye.h              nvram.h        sdla.h             unistd.h
+atm_tcp.h          cuda.h              hdlc                  in.h                 mii.h               omap3isp.h     securebits.h       usb
+atm_zatm.h         cyclades.h          hdlc.h                in6.h                minix_fs.h          omapfb.h       selinux_netlink.h  usbdevice_fs.h
+atmapi.h           cycx_cfm.h          hdlcdrv.h             in_route.h           mman.h              oom.h          sem.h              utime.h
+atmarp.h           dcbnl.h             hdreg.h               inet_diag.h          mmc                 param.h        serial.h           utsname.h
+atmbr2684.h        dccp.h              hid.h                 inotify.h            mmtimer.h           parport.h      serial_core.h      uvcvideo.h
+atmclip.h          dlm.h               hiddev.h              input.h              mqueue.h            patchkey.h     serial_reg.h       v4l2-mediabus.h
+atmdev.h           dlm_device.h        hidraw.h              ioctl.h              mroute.h            pci.h          serio.h            v4l2-subdev.h
+atmioc.h           dlm_netlink.h       hpet.h                ip.h                 mroute6.h           pci_regs.h     shm.h              version.h
+atmlec.h           dlm_plock.h         hysdn_if.h            ip6_tunnel.h         msdos_fs.h          perf_event.h   signal.h           veth.h
+atmmpc.h           dlmconstants.h      i2c-dev.h             ip_vs.h              msg.h               personality.h  signalfd.h         vhost.h
+atmppp.h           dm-ioctl.h          i2c-dev.h.kernel      ipc.h                mtio.h              pfkeyv2.h      snmp.h             videodev2.h
+atmsap.h           dm-log-userspace.h  i2c.h                 ipmi.h               n_r3964.h           pg.h           socket.h           virtio_9p.h
+atmsvc.h           dn.h                i2o-dev.h             ipmi_msgdefs.h       nbd.h               phantom.h      sockios.h          virtio_balloon.h
+audit.h            dqblk_xfs.h         i8k.h                 ipsec.h              ncp.h               phonet.h       som.h              virtio_blk.h
+aufs_type.h        dvb                 icmp.h                ipv6.h               ncp_fs.h            pkt_cls.h      sonet.h            virtio_config.h
+auto_fs.h          edd.h               icmpv6.h              ipv6_route.h         ncp_mount.h         pkt_sched.h    sonypi.h           virtio_console.h
+auto_fs4.h         efs_fs_sb.h         if.h                  ipx.h                ncp_no.h            pktcdvd.h      sound.h            virtio_ids.h
+auxvec.h           elf-em.h            if_addr.h             irda.h               neighbour.h         pmu.h          soundcard.h        virtio_net.h
+ax25.h             elf-fdpic.h         if_addrlabel.h        irqnr.h              net.h               poll.h         spi                virtio_pci.h
+b1lli.h            elf.h               if_alg.h              isdn                 net_dropmon.h       posix_types.h  stat.h             virtio_ring.h
+baycom.h           elfcore.h           if_arcnet.h           isdn.h               net_tstamp.h        ppdev.h        stddef.h           virtio_rng.h
+bfs_fs.h           errno.h             if_arp.h              isdn_divertif.h      netdevice.h         ppp-comp.h     string.h           vt.h
+binfmts.h          errqueue.h          if_bonding.h          isdn_ppp.h           netfilter           ppp_defs.h     sunrpc             wait.h
+blk_types.h        ethtool.h           if_bridge.h           isdnif.h             netfilter.h         pps.h          suspend_ioctls.h   wanrouter.h
+blkpg.h            eventpoll.h         if_cablemodem.h       iso_fs.h             netfilter_arp       prctl.h        swab.h             watchdog.h
+blktrace_api.h     ext2_fs.h           if_ec.h               ivtv.h               netfilter_arp.h     ptp_clock.h    synclink.h         wimax
+bpqether.h         fadvise.h           if_eql.h              ivtvfb.h             netfilter_bridge    ptrace.h       sysctl.h           wimax.h
+bsg.h              falloc.h            if_ether.h            ixjuser.h            netfilter_bridge.h  qnx4_fs.h      taskstats.h        wireless.h
+byteorder          fanotify.h          if_fc.h               jffs2.h              netfilter_decnet.h  qnxtypes.h     tc_act             x25.h
+caif               fb.h                if_fddi.h             joystick.h           netfilter_ipv4      quota.h        tc_ematch          xattr.h
+can                fcntl.h             if_frad.h             kd.h                 netfilter_ipv4.h    radeonfb.h     tcp.h              xfrm.h
+can.h              fd.h                if_hippi.h            kdev_t.h             netfilter_ipv6      raid           telephony.h
+capability.h       fdreg.h             if_infiniband.h       kernel-page-flags.h  netfilter_ipv6.h    random.h       termios.h
+capi.h             fib_rules.h         if_link.h             kernel.h             netlink.h           raw.h          time.h
+cciss_defs.h       fiemap.h            if_ltalk.h            kernelcapi.h         netrom.h            rds.h          times.h
+root@beaglebone:/usr/include/linux# ^C
+root@beaglebone:/usr/include/linux# mv i
+i2c-dev.h         if_addr.h         if_ec.h           if_link.h         if_slip.h         in.h              ip6_tunnel.h      ipx.h             iso_fs.h
+i2c-dev.h.kernel  if_addrlabel.h    if_eql.h          if_ltalk.h        if_strip.h        in6.h             ip_vs.h           irda.h            ivtv.h
+i2c.h             if_alg.h          if_ether.h        if_packet.h       if_tr.h           in_route.h        ipc.h             irqnr.h           ivtvfb.h
+i2o-dev.h         if_arcnet.h       if_fc.h           if_phonet.h       if_tun.h          inet_diag.h       ipmi.h            isdn/             ixjuser.h
+i8k.h             if_arp.h          if_fddi.h         if_plip.h         if_tunnel.h       inotify.h         ipmi_msgdefs.h    isdn.h
+icmp.h            if_bonding.h      if_frad.h         if_ppp.h          if_vlan.h         input.h           ipsec.h           isdn_divertif.h
+icmpv6.h          if_bridge.h       if_hippi.h        if_pppol2tp.h     if_x25.h          ioctl.h           ipv6.h            isdn_ppp.h
+if.h              if_cablemodem.h   if_infiniband.h   if_pppox.h        igmp.h            ip.h              ipv6_route.h      isdnif.h
+root@beaglebone:/usr/include/linux# mv i2
+i2c-dev.h         i2c-dev.h.kernel  i2c.h             i2o-dev.h
+root@beaglebone:/usr/include/linux# mv i2cd^C
+root@beaglebone:/usr/include/linux# cd -
+/root/GetData
+root@beaglebone:~/GetData# ls
+GetDataCTutorial.c  L3G.h  LSM303.h  a.out  data.txt  i2c-dev.h  main  main.c  manualGetDataR2.c  sensor.c
+root@beaglebone:~/GetData# gcc manualGetDataR2.c
+In file included from manualGetDataR2.c:6:0:
+/usr/include/linux/i2c-dev.h:38:8: error: redefinition of 'struct i2c_msg'
+/usr/include/linux/i2c.h:67:8: note: originally defined here
+/usr/include/linux/i2c-dev.h:90:7: error: redefinition of 'union i2c_smbus_data'
+/usr/include/linux/i2c.h:125:7: note: originally defined here
+root@beaglebone:~/GetData# gcc manualGetDataR2.c
+root@beaglebone:~/GetData# ./a.out
+sensor set
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+^CNo size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+cNo size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+cNo size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+^CNo size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+^CNo size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+^CNo size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+^CNo size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+^CNo size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+^CNo size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+^CNo size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+^CNo size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+^CNo size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+^CNo size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+^CNo size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+^CNo size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+^CNo size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+^CNo size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+^CNo size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+^CNo size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+^CNo size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+^Z
+[1]+  Stopped                 ./a.out
+root@beaglebone:~/GetData# fg^C
+root@beaglebone:~/GetData# kill %%
+[1]+  Terminated              ./a.out
+root@beaglebone:~/GetData# vim manualGetDataR2.c
+root@beaglebone:~/GetData# cat /dev/null
+root@beaglebone:~/GetData# echo "asdf"  > /dev/null
+root@beaglebone:~/GetData# cat /dev/null
+root@beaglebone:~/GetData# ls
+GetDataCTutorial.c  L3G.h  LSM303.h  a.out  accelData.txt  data.txt  i2c-dev.h  main  main.c  manualGetDataR2.c  sensor.c
+root@beaglebone:~/GetData# ./a.out
+sensor set
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+^CNo size specified (using byte-data access)
+No size specified (using byte-data access)^C
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+^CNo size specified (using byte-data access)
+No size specified (using byte-data access)
+^CNo size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+cNo size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+^CNo size specified (using byte-data access)
+No size specified (using byte-data access)
+^CNo size specified (using byte-data access)
+^CNo size specified (using byte-data access)
+^CNo size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+^Z
+[1]+  Stopped                 ./a.out
+root@beaglebone:~/GetData# kill %%
+[1]+  Terminated              ./a.out
+root@beaglebone:~/GetData# kill %% 1>^C
+root@beaglebone:~/GetData# vim manualGetDataR2.c
+root@beaglebone:~/GetData# gcc manualGetDataR2.c
+./root@beaglebone:~/GetData# ./a.out
+sensor set
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+^CNo size specified (using byte-data access)
+No size specified (using byte-data access)
+^CNo size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+zNo size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+kNo size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+iNo size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+^CNo size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)^Z
+
+[1]+  Stopped                 ./a.out
+root@beaglebone:~/GetData# kill %%
+[1]+  Terminated              ./a.out
+root@beaglebone:~/GetData# kill %%
+-bash: kill: %%: no such job
+root@beaglebone:~/GetData# jobvs
+-bash: jobvs: command not found
+root@beaglebone:~/GetData# jobs
+root@beaglebone:~/GetData# clear
+root@beaglebone:~/GetData# jobvs^C
+root@beaglebone:~/GetData# ./a.out 2>/dev/null
+sensor set
+
+^C^C^Z
+[1]+  Stopped                 ./a.out 2> /dev/null
+root@beaglebone:~/GetData# kill %%
+
+[1]+  Stopped                 ./a.out 2> /dev/null
+root@beaglebone:~/GetData# jobs
+[1]+  Stopped                 ./a.out 2> /dev/null
+root@beaglebone:~/GetData# jobs
+[1]+  Stopped                 ./a.out 2> /dev/null
+root@beaglebone:~/GetData# kill %%
+
+[1]+  Stopped                 ./a.out 2> /dev/null
+root@beaglebone:~/GetData# jobs
+[1]+  Stopped                 ./a.out 2> /dev/null
+root@beaglebone:~/GetData# kill -9 %+
+
+[1]+  Stopped                 ./a.out 2> /dev/null
+root@beaglebone:~/GetData# git statu^C
+root@beaglebone:~/GetData# jobs
+[1]+  Stopped                 ./a.out 2> /dev/null
+root@beaglebone:~/GetData# fg
+./a.out 2> /dev/null
+Terminated
+root@beaglebone:~/GetData#
+root@beaglebone:~/GetData# jobs
+root@beaglebone:~/GetData# clear
+root@beaglebone:~/GetData# jobs
+root@beaglebone:~/GetData# ls
+GetDataCTutorial.c  L3G.h  LSM303.h  a.out  accelData.txt  data.txt  i2c-dev.h  main  main.c  manualGetDataR2.c  sensor.c
+root@beaglebone:~/GetData# cat accelData.txt
+acce Thu Jan 15 02:55:21 UTC 2015 - db cd 61 1f a4 f3
+acce Thu Jan 15 02:55:21 UTC 2015 - ba ce 5a 20 33 f2
+acce Thu Jan 15 02:55:21 UTC 2015 - 91 ce af 1f 84 f1
+acce Thu Jan 15 02:55:21 UTC 2015 - bf ce d4 1f 24 f2
+acce Thu Jan 15 02:55:21 UTC 2015 - 94 cd e5 1e 37 f3
+acce Thu Jan 15 02:55:21 UTC 2015 - 76 ce d4 1f 98 f2
+acce Thu Jan 15 02:55:21 UTC 2015 - ed cd 16 1f 8a f1
+acce Thu Jan 15 02:55:22 UTC 2015 - 2a ce 6e 1f e0 f3
+acce Thu Jan 15 02:55:22 UTC 2015 - 1b cd 94 1f b0 f2
+acce Thu Jan 15 02:55:22 UTC 2015 - 71 cf 31 1f fd ef
+acce Thu Jan 15 02:55:22 UTC 2015 - fb ce 80 1f 70 f3
+acce Thu Jan 15 02:55:22 UTC 2015 - 5c ce e1 20 18 f2
+acce Thu Jan 15 02:55:22 UTC 2015 - 8d cf e1 1f 85 f3
+acce Thu Jan 15 02:55:22 UTC 2015 - 47 cf e0 1f 87 f1
+acce Thu Jan 15 02:55:22 UTC 2015 - bd ce 15 20 5b f2
+acce Thu Jan 15 02:55:22 UTC 2015 - 7c ce f3 1f 5c f1
+acce Thu Jan 15 02:55:23 UTC 2015 - 60 cf 6a 1f 3d f2
+acce Thu Jan 15 02:55:23 UTC 2015 - d5 cf ff 1f 4c f3
+acce Thu Jan 15 02:55:23 UTC 2015 - b0 cf 9c 1f 8f f3
+acce Thu Jan 15 02:55:23 UTC 2015 - 2a cd 6b 1e 0c f2
+acce Thu Jan 15 02:55:23 UTC 2015 - bf ce d5 1f f9 f2
+acce Thu Jan 15 02:55:23 UTC 2015 - b8 cd 7f 1f 3f f2
+acce Thu Jan 15 02:55:23 UTC 2015 - 90 ce 85 20 0b f3
+acce Thu Jan 15 02:55:23 UTC 2015 - 37 cd 5a 20 c7 f1
+acce Thu Jan 15 02:55:23 UTC 2015 - b1 ce 02 1f 27 f3
+acce Thu Jan 15 02:55:24 UTC 2015 - e8 cd e4 20 91 f0
+acce Thu Jan 15 02:55:24 UTC 2015 - c0 cf f8 1f aa f1
+acce Thu Jan 15 02:55:24 UTC 2015 - 00 cf 5c 1f ab f4
+acce Thu Jan 15 02:55:24 UTC 2015 - 03 ce 23 20 8f f1
+acce Thu Jan 15 02:55:24 UTC 2015 - 34 cf 18 1f eb f2
+acce Thu Jan 15 02:55:24 UTC 2015 - 08 cf d1 1f 68 f2
+acce Thu Jan 15 02:55:24 UTC 2015 - cc ce 28 1f d1 f2
+acce Thu Jan 15 02:55:24 UTC 2015 - 0d cd 84 20 02 f1
+acce Thu Jan 15 02:55:25 UTC 2015 - a8 cd 5b 1f c8 f3
+acce Thu Jan 15 02:55:25 UTC 2015 - ff ce ab 1f 5f f0
+acce Thu Jan 15 02:55:25 UTC 2015 - bf cd d2 1f 43 ed
+acce Thu Jan 15 02:55:25 UTC 2015 - ea cd 70 1f d4 f2
+acce Thu Jan 15 02:55:25 UTC 2015 - 06 ce 39 1f b0 ef
+acce Thu Jan 15 02:55:25 UTC 2015 - e5 cd 6f 1f 8f f3
+acce Thu Jan 15 02:55:25 UTC 2015 - 68 cc 40 1f 56 f3
+acce Thu Jan 15 02:55:25 UTC 2015 - d1 cd c4 1f 92 f0
+acce Thu Jan 15 02:55:25 UTC 2015 - 27 ce 7b 1f bb f1
+acce Thu Jan 15 02:55:25 UTC 2015 - 60 ce b8 1f 7f f1
+acce Thu Jan 15 02:55:25 UTC 2015 - f9 cd c1 20 83 f3
+acce Thu Jan 15 02:55:25 UTC 2015 - 37 ce 99 1f 8c f1
+acce Thu Jan 15 02:55:25 UTC 2015 - 77 cd d0 1f c0 f3
+acce Thu Jan 15 02:55:25 UTC 2015 - a5 ce 0c 1f c0 f1
+acce Thu Jan 15 02:55:26 UTC 2015 - c6 ce 20 1f b0 f4
+acce Thu Jan 15 02:55:26 UTC 2015 - 60 cd 0c 1f 9b f5
+acce Thu Jan 15 02:55:26 UTC 2015 - 84 cc ff 1f ad f3
+acce Thu Jan 15 02:55:26 UTC 2015 - 8c cc 22 1e af f2
+acce Thu Jan 15 02:55:26 UTC 2015 - 32 ce 33 1f 89 ef
+acce Thu Jan 15 02:55:26 UTC 2015 - 43 cf 1a 1f 14 f4
+acce Thu Jan 15 02:55:26 UTC 2015 - 34 ce 04 1f b3 ed
+acce Thu Jan 15 02:55:26 UTC 2015 - a4 ce 7b 1f 47 f1
+acce Thu Jan 15 02:55:26 UTC 2015 - 1c ce 45 1f 5d f3
+acce Thu Jan 15 02:55:26 UTC 2015 - c8 cf 90 1f b8 f4
+acce Thu Jan 15 02:55:26 UTC 2015 - 8c cd 8c 1f 6c f3
+acce Thu Jan 15 02:55:26 UTC 2015 - 87 ce e1 1f 67 f4
+acce Thu Jan 15 02:55:26 UTC 2015 - 17 ce 34 1f 5b f4
+acce Thu Jan 15 02:55:26 UTC 2015 - 8f cc cc 1f 13 f3
+acce Thu Jan 15 02:55:26 UTC 2015 - a0 cf d5 20 26 ef
+acce Thu Jan 15 02:55:27 UTC 2015 - 89 cf 8f 1f 57 f0
+acce Thu Jan 15 02:55:27 UTC 2015 - ef ce e2 1f a5 f3
+acce Thu Jan 15 02:55:27 UTC 2015 - d0 cc 2f 1f d0 f2
+acce Thu Jan 15 02:55:27 UTC 2015 - 38 ce 40 20 94 f4
+acce Thu Jan 15 02:55:27 UTC 2015 - 6e cd b4 20 2c f0
+acce Thu Jan 15 02:55:27 UTC 2015 - ef cd 61 1f 94 f3
+acce Thu Jan 15 02:55:27 UTC 2015 - 45 cd ff 1f 36 f0
+acce Thu Jan 15 02:55:27 UTC 2015 - 1b cf 65 1f 3f f3
+acce Thu Jan 15 02:55:27 UTC 2015 - ea ce d1 1f 89 f3
+acce Thu Jan 15 02:55:27 UTC 2015 - 0d cd b4 1f 38 f0
+acce Thu Jan 15 02:55:27 UTC 2015 - fc cf 55 1f 0d f4
+acce Thu Jan 15 02:55:27 UTC 2015 - cf cf f9 1f 2a f1
+acce Thu Jan 15 02:55:27 UTC 2015 - 34 cf 52 1f b1 f3
+acce Thu Jan 15 02:55:27 UTC 2015 - c3 cc 70 1f cf f1
+acce Thu Jan 15 02:55:27 UTC 2015 - e0 cd 20 1f 2d f3
+acce Thu Jan 15 02:55:27 UTC 2015 - 6f ce b0 1f b7 f1
+acce Thu Jan 15 02:55:28 UTC 2015 - 79 ce 2d 1f 21 f5
+acce Thu Jan 15 02:55:28 UTC 2015 - b8 ce 3d 1f aa f4
+acce Thu Jan 15 02:55:28 UTC 2015 - 2b cd 9b 1f 04 f2
+acce Thu Jan 15 02:55:28 UTC 2015 - 6c cd b1 1f 04 f3
+acce Thu Jan 15 02:55:28 UTC 2015 - 2f cf 8d 1f 48 ef
+acce Thu Jan 15 02:55:28 UTC 2015 - 5f ce 3f 1f f7 f4
+acce Thu Jan 15 02:55:28 UTC 2015 - cf cf a7 1f 90 f3
+acce Thu Jan 15 02:55:28 UTC 2015 - 8c cd 24 1f 1f f3
+acce Thu Jan 15 02:55:28 UTC 2015 - ac ce f8 1f d8 f5
+acce Thu Jan 15 02:55:28 UTC 2015 - 2a cc ed 1f 86 f0
+acce Thu Jan 15 02:55:28 UTC 2015 - 0b cd 37 1f aa f0
+acce Thu Jan 15 02:55:28 UTC 2015 - 5c cd 80 20 df f1
+acce Thu Jan 15 02:55:28 UTC 2015 - 48 cd 64 1f 91 f1
+acce Thu Jan 15 02:55:28 UTC 2015 - c7 cd 84 1f bb f6
+acce Thu Jan 15 02:55:28 UTC 2015 - e7 ce 9c 1f 83 f4
+acce Thu Jan 15 02:55:28 UTC 2015 - 7b ce c8 20 76 f0
+acce Thu Jan 15 02:55:28 UTC 2015 - aa cd c1 20 02 f0
+acce Thu Jan 15 02:55:29 UTC 2015 - 5c ce 7f 1f 78 f1
+acce Thu Jan 15 02:55:29 UTC 2015 - 62 ce f8 1f e3 f1
+acce Thu Jan 15 02:55:29 UTC 2015 - 70 ce 49 1e 38 f3
+acce Thu Jan 15 02:55:29 UTC 2015 - 00 cf 64 1f db f0
+acce Thu Jan 15 02:55:29 UTC 2015 - 28 cc f6 1e 14 f1
+acce Thu Jan 15 02:55:29 UTC 2015 - f1 ce c1 21 0c f2
+acce Thu Jan 15 02:55:29 UTC 2015 - a4 ce 78 1f a8 f4
+acce Thu Jan 15 02:55:29 UTC 2015 - b7 cd 8c 1f 02 f0
+acce Thu Jan 15 02:55:29 UTC 2015 - f4 ce ea 1f ae f0
+acce Thu Jan 15 02:55:29 UTC 2015 - 3a ce 24 1e 31 f3
+acce Thu Jan 15 02:55:29 UTC 2015 - a8 ce 1c 1f fd f1
+acce Thu Jan 15 02:55:29 UTC 2015 - 81 cf 99 20 9b f1
+acce Thu Jan 15 02:55:29 UTC 2015 - 1a cd 34 1f 84 f1
+acce Thu Jan 15 02:55:29 UTC 2015 - c6 ce 7c 1f b9 f2
+acce Thu Jan 15 02:55:30 UTC 2015 - c0 cf 28 1f 79 f4
+acce Thu Jan 15 02:55:30 UTC 2015 - 77 d0 84 20 c8 f1
+acce Thu Jan 15 02:55:30 UTC 2015 - ed ce 60 1f 6f f0
+acce Thu Jan 15 02:55:30 UTC 2015 - 39 ce 11 1f 94 f2
+acce Thu Jan 15 02:55:30 UTC 2015 - d1 cf 50 1e 83 ee
+acce Thu Jan 15 02:55:30 UTC 2015 - 8d cd 03 20 56 f4
+acce Thu Jan 15 02:55:30 UTC 2015 - ed cd f0 1e 48 f1
+acce Thu Jan 15 02:55:30 UTC 2015 - e8 cd 3f 1f 4d f2
+acce Thu Jan 15 02:55:30 UTC 2015 - cc cd 71 1f 90 f1
+acce Thu Jan 15 02:55:30 UTC 2015 - b2 cd 87 1f 8f f1
+acce Thu Jan 15 02:55:30 UTC 2015 - b7 ce 5b 1f 6d f3
+acce Thu Jan 15 02:55:30 UTC 2015 - 3d cf 63 1f 04 f6
+acce Thu Jan 15 02:55:30 UTC 2015 - dd ce 95 1f 8b f2
+acce Thu Jan 15 02:55:30 UTC 2015 - 82 cb ef 1f 80 f3
+acce Thu Jan 15 02:55:30 UTC 2015 - 3b cf df 1f fd f3
+acce Thu Jan 15 02:55:30 UTC 2015 - c7 ce e0 1e 72 f0
+acce Thu Jan 15 02:55:31 UTC 2015 - 1b ce 3d 1f 16 f4
+acce Thu Jan 15 02:55:31 UTC 2015 - 3d ce bd 1f ea f3
+acce Thu Jan 15 02:55:31 UTC 2015 - 4d ce 43 1f bc f2
+acce Thu Jan 15 02:55:31 UTC 2015 - 6c cd 18 1f 4f f1
+acce Thu Jan 15 02:55:31 UTC 2015 - e1 ce 0f 1f 0a f3
+acce Thu Jan 15 02:55:31 UTC 2015 - 1b ce 4f 20 58 f3
+acce Thu Jan 15 02:55:31 UTC 2015 - f0 cf dd 1e 35 f3
+acce Thu Jan 15 02:55:31 UTC 2015 - ea cd 6a 1f c0 f1
+acce Thu Jan 15 02:55:31 UTC 2015 - c8 ce b0 1f ba f3
+acce Thu Jan 15 02:55:31 UTC 2015 - ab cd fd 1f 51 f0
+acce Thu Jan 15 02:55:31 UTC 2015 - 8c cf 85 1f db f3
+acce Thu Jan 15 02:55:31 UTC 2015 - ef ce 47 20 b7 f1
+acce Thu Jan 15 02:55:31 UTC 2015 - 04 cf a5 20 10 f1
+acce Thu Jan 15 02:55:31 UTC 2015 - f3 cf 17 1f 6a f2
+acce Thu Jan 15 02:55:31 UTC 2015 - 51 cf 8d 20 1d f0
+acce Thu Jan 15 02:55:31 UTC 2015 - 8f cf b8 20 81 f2
+acce Thu Jan 15 02:55:32 UTC 2015 - e8 cf 21 20 5e f0
+acce Thu Jan 15 02:55:32 UTC 2015 - af ce 31 1f c4 f2
+acce Thu Jan 15 02:55:32 UTC 2015 - ec cf 95 1f 6a f2
+acce Thu Jan 15 02:55:32 UTC 2015 - 13 ce 3d 20 bf f0
+acce Thu Jan 15 02:55:32 UTC 2015 - 5b cf a8 1f e0 f3
+acce Thu Jan 15 02:55:32 UTC 2015 - 92 cd f0 1f 7a f3
+acce Thu Jan 15 02:55:32 UTC 2015 - 04 cf 10 1f d0 ef
+acce Thu Jan 15 02:55:32 UTC 2015 - 67 cd 6c 20 03 f2
+acce Thu Jan 15 02:55:32 UTC 2015 - 56 ce aa 1f 6b f2
+acce Thu Jan 15 02:55:32 UTC 2015 - 39 cf 3c 1f ef f2
+acce Thu Jan 15 02:55:32 UTC 2015 - bb cd 83 1e c7 f1
+acce Thu Jan 15 02:55:32 UTC 2015 - 71 cc 32 1e 9b f4
+acce Thu Jan 15 02:55:32 UTC 2015 - a4 ce 58 1f c6 ef
+acce Thu Jan 15 02:55:32 UTC 2015 - 0f cc 2b 1f 85 f2
+acce Thu Jan 15 02:55:32 UTC 2015 - 7c cd 56 20 a8 f4
+acce Thu Jan 15 02:55:32 UTC 2015 - 31 ce 24 20 92 f2
+acce Thu Jan 15 02:55:33 UTC 2015 - 57 cd c5 1f bf f3
+acce Thu Jan 15 02:55:33 UTC 2015 - f8 cc 75 20 55 f2
+acce Thu Jan 15 02:55:33 UTC 2015 - d7 cd 33 20 60 f1
+acce Thu Jan 15 02:55:33 UTC 2015 - 72 ce d7 1e f8 f3
+acce Thu Jan 15 02:55:33 UTC 2015 - 9f cd a0 1f 5f f1
+acce Thu Jan 15 02:55:33 UTC 2015 - 2f cf 15 20 ff f5
+acce Thu Jan 15 02:55:33 UTC 2015 - 00 ce ad 20 a3 f5
+acce Thu Jan 15 02:55:33 UTC 2015 - da cd 6e 20 d9 f1
+acce Thu Jan 15 02:55:33 UTC 2015 - b3 cf 91 20 8a f2
+acce Thu Jan 15 02:55:33 UTC 2015 - d6 ce 3b 1f ed f3
+acce Thu Jan 15 02:55:33 UTC 2015 - 60 cf 5f 20 b1 f1
+acce Thu Jan 15 02:55:33 UTC 2015 - 3b cf 5d 20 f0 f3
+acce Thu Jan 15 02:55:33 UTC 2015 - bc cd c0 1f c8 f0
+acce Thu Jan 15 02:55:33 UTC 2015 - e9 ce 17 1f 2a f2
+acce Thu Jan 15 02:55:33 UTC 2015 - fd cd e9 1f c0 f2
+acce Thu Jan 15 02:55:34 UTC 2015 - fc ce 02 1f 47 f1
+acce Thu Jan 15 02:55:34 UTC 2015 - 0c cd 0a 1f 5a f2
+acce Thu Jan 15 02:55:34 UTC 2015 - 1a d0 95 20 16 f2
+acce Thu Jan 15 02:55:34 UTC 2015 - 55 ce c2 1e 10 f3
+acce Thu Jan 15 02:55:34 UTC 2015 - e7 cd eb 1f 80 f2
+acce Thu Jan 15 02:55:34 UTC 2015 - 52 ce f2 1e 5c f0
+acce Thu Jan 15 02:55:34 UTC 2015 - bf cd f5 1f ff f3
+acce Thu Jan 15 02:55:34 UTC 2015 - 1c cd 26 1e f5 f4
+acce Thu Jan 15 02:55:34 UTC 2015 - 7f ce d2 1f 87 f3
+acce Thu Jan 15 02:55:34 UTC 2015 - f8 ce c5 20 b0 ef
+acce Thu Jan 15 02:55:34 UTC 2015 - 0d cd 0d 1f fd f1
+acce Thu Jan 15 02:55:34 UTC 2015 - a5 cc 40 1f e6 f2
+acce Thu Jan 15 02:55:34 UTC 2015 - 0c ce eb 20 15 f2
+acce Thu Jan 15 02:55:34 UTC 2015 - f3 cf 16 1f d6 f1
+acce Thu Jan 15 02:55:34 UTC 2015 - 95 cd 74 1f bc f1
+acce Thu Jan 15 02:55:34 UTC 2015 - a8 ce ff 1e 79 f2
+acce Thu Jan 15 02:55:35 UTC 2015 - d3 ce 4d 1f d1 f2
+acce Thu Jan 15 02:55:35 UTC 2015 - 2b ce dd 1f 0c f2
+acce Thu Jan 15 02:55:35 UTC 2015 - a0 ce 5d 20 17 f4
+acce Thu Jan 15 02:55:35 UTC 2015 - a5 cd 92 1f e0 f0
+acce Thu Jan 15 02:55:35 UTC 2015 - 8d ce 7d 1f 1b ef
+acce Thu Jan 15 02:55:35 UTC 2015 - d1 cd ef 20 a8 f3
+acce Thu Jan 15 02:55:35 UTC 2015 - f8 cd 57 20 43 f2
+acce Thu Jan 15 02:55:35 UTC 2015 - 5a cf 60 1f 42 f0
+acce Thu Jan 15 02:55:35 UTC 2015 - e3 cd 24 1f 11 f3
+acce Thu Jan 15 02:58:11 UTC 2015 - 2c cd 01 1f 6a f3
+acce Thu Jan 15 02:58:11 UTC 2015 - 48 ce 87 1f 5b f1
+acce Thu Jan 15 02:58:12 UTC 2015 - 7b ce 41 1f 75 f3
+acce Thu Jan 15 02:58:12 UTC 2015 - 40 cd f9 1f 68 f5
+acce Thu Jan 15 02:58:12 UTC 2015 - 20 cd fa 1f dd f1
+acce Thu Jan 15 02:58:12 UTC 2015 - 11 ce bc 1f 08 f3
+acce Thu Jan 15 02:58:12 UTC 2015 - 6f cd 58 1f 10 f1
+acce Thu Jan 15 02:58:12 UTC 2015 - 3d ce b4 20 f0 f3
+acce Thu Jan 15 02:58:12 UTC 2015 - 89 ce 58 1f 74 f2
+acce Thu Jan 15 02:58:12 UTC 2015 - bb ce b4 1f e5 f3
+acce Thu Jan 15 02:58:13 UTC 2015 - 1f ce 6b 1f 74 ef
+acce Thu Jan 15 02:58:13 UTC 2015 - 9c cd 5e 1f bb f2
+acce Thu Jan 15 02:58:13 UTC 2015 - 3b cd d7 1f d7 f1
+acce Thu Jan 15 02:58:13 UTC 2015 - 37 cc d8 20 d5 f3
+acce Thu Jan 15 02:58:13 UTC 2015 - bd ce 2f 20 20 f3
+acce Thu Jan 15 02:58:13 UTC 2015 - d3 cd 63 1e a8 f1
+acce Thu Jan 15 02:58:13 UTC 2015 - 08 cd 95 1f f0 f2
+acce Thu Jan 15 02:58:14 UTC 2015 - 5b cf af 1f 03 f3
+acce Thu Jan 15 02:58:14 UTC 2015 - 87 cd e4 1f b5 f2
+acce Thu Jan 15 02:58:14 UTC 2015 - ec cf 0a 20 4b f4
+acce Thu Jan 15 02:58:14 UTC 2015 - 07 cd b4 1f 02 f2
+acce Thu Jan 15 02:58:14 UTC 2015 - 37 cd 77 1f ac f3
+acce Thu Jan 15 02:58:14 UTC 2015 - 11 cd 2f 1f 75 f2
+acce Thu Jan 15 02:58:14 UTC 2015 - 73 cc 6c 1f 0c f1
+acce Thu Jan 15 02:58:14 UTC 2015 - 50 ce 27 20 4d f3
+acce Thu Jan 15 02:58:14 UTC 2015 - 3b ce 20 1f c0 f3
+acce Thu Jan 15 02:58:15 UTC 2015 - f9 cd ed 1f ba f4
+acce Thu Jan 15 02:58:15 UTC 2015 - 31 ce 17 1f 75 f2
+acce Thu Jan 15 02:58:15 UTC 2015 - b3 ce c4 1f 0f f4
+acce Thu Jan 15 02:58:15 UTC 2015 - 70 ce 20 20 95 f3
+acce Thu Jan 15 02:59:43 UTC 2015 - 17 ce dc 20 d1 f4
+acce Thu Jan 15 02:59:43 UTC 2015 - c6 ce c9 1f 18 f3
+acce Thu Jan 15 02:59:43 UTC 2015 - ba cf 61 20 f8 f3
+acce Thu Jan 15 02:59:43 UTC 2015 - 83 ce 3b 1f a1 f3
+acce Thu Jan 15 02:59:43 UTC 2015 - a8 cd 0f 20 ff f0
+acce Thu Jan 15 02:59:44 UTC 2015 - 92 ce 44 20 f0 f4
+acce Thu Jan 15 02:59:44 UTC 2015 - 64 ce f2 20 3d f0
+acce Thu Jan 15 02:59:44 UTC 2015 - 63 ce 58 1f 16 f1
+acce Thu Jan 15 02:59:44 UTC 2015 - 6e cf 97 1f 4b f3
+acce Thu Jan 15 02:59:44 UTC 2015 - 23 cd 31 1f 2d f1
+acce Thu Jan 15 02:59:44 UTC 2015 - 64 cd 54 20 16 f3
+acce Thu Jan 15 02:59:44 UTC 2015 - 1d cd 4f 1e 3d f3
+acce Thu Jan 15 02:59:45 UTC 2015 - 40 cd 90 1f e4 f2
+acce Thu Jan 15 02:59:45 UTC 2015 - 5b cd af 1f e0 f2
+acce Thu Jan 15 02:59:45 UTC 2015 - e0 cd 53 1f d7 f1
+acce Thu Jan 15 02:59:45 UTC 2015 - 21 ce 56 1f 1f f3
+acce Thu Jan 15 02:59:45 UTC 2015 - d6 cf 3d 20 c8 f2
+acce Thu Jan 15 02:59:45 UTC 2015 - f8 cf db 1f 8c f1
+acce Thu Jan 15 02:59:45 UTC 2015 - 67 cc 73 20 e4 f3
+acce Thu Jan 15 02:59:45 UTC 2015 - 6f cf c3 1f 2d f1
+acce Thu Jan 15 02:59:45 UTC 2015 - 0f cf c2 1f e4 f2
+acce Thu Jan 15 02:59:45 UTC 2015 - f4 cd 3c 1f 00 f4
+acce Thu Jan 15 02:59:45 UTC 2015 - 30 ce 22 1f d9 f3
+acce Thu Jan 15 02:59:45 UTC 2015 - cb d0 3f 1f fb f1
+acce Thu Jan 15 02:59:45 UTC 2015 - d1 ce 43 1f 91 f5
+acce Thu Jan 15 02:59:46 UTC 2015 - a8 cd c7 1e 2f f5
+acce Thu Jan 15 02:59:46 UTC 2015 - 92 ce f1 20 0c f1
+acce Thu Jan 15 02:59:46 UTC 2015 - dd cd 39 1f 80 f1
+acce Thu Jan 15 02:59:46 UTC 2015 - e0 ce 83 20 a1 f1
+acce Thu Jan 15 02:59:46 UTC 2015 - 2c ce 6c 1f a7 f3
+acce Thu Jan 15 02:59:46 UTC 2015 - a4 ce 89 1f 79 f1
+acce Thu Jan 15 02:59:46 UTC 2015 - 17 cd 7c 1f 67 f5
+acce Thu Jan 15 02:59:46 UTC 2015 - d6 ce 23 20 e7 f5
+acce Thu Jan 15 02:59:46 UTC 2015 - 16 cd e4 1f 50 f3
+acce Thu Jan 15 02:59:46 UTC 2015 - dc ce dc 20 4c f1
+acce Thu Jan 15 02:59:46 UTC 2015 - 8c ce dd 1f 24 f2
+acce Thu Jan 15 02:59:46 UTC 2015 - ac ce a8 1f 7f f0
+acce Thu Jan 15 02:59:46 UTC 2015 - 20 ce 2e 20 cc f3
+acce Thu Jan 15 02:59:46 UTC 2015 - 9c cd d7 1f bb f0
+acce Thu Jan 15 02:59:46 UTC 2015 - c0 ce df 1f a3 ee
+acce Thu Jan 15 02:59:46 UTC 2015 - 99 ce d2 1f d1 f4
+acce Thu Jan 15 02:59:46 UTC 2015 - f9 ce 5a 20 06 f4
+acce Thu Jan 15 02:59:47 UTC 2015 - 11 ce a8 1f 3c ef
+acce Thu Jan 15 02:59:47 UTC 2015 - 98 ce 5c 1f 1f f1
+acce Thu Jan 15 02:59:47 UTC 2015 - 2d ce e7 1f 5b f0
+acce Thu Jan 15 02:59:47 UTC 2015 - 5a ce 61 1f a4 f1
+acce Thu Jan 15 02:59:47 UTC 2015 - af cd fa 20 88 f3
+acce Thu Jan 15 02:59:47 UTC 2015 - bf ce f6 1f 9c f3
+acce Thu Jan 15 02:59:47 UTC 2015 - 17 ce c8 1f 68 f4
+acce Thu Jan 15 02:59:47 UTC 2015 - 97 ce 7f 1f 2f f1
+acce Thu Jan 15 02:59:47 UTC 2015 - 84 ce 4b 1f cb f3
+acce Thu Jan 15 02:59:47 UTC 2015 - dd ce 67 1f 25 f3
+acce Thu Jan 15 02:59:47 UTC 2015 - 1f ce b1 1f dd ef
+acce Thu Jan 15 02:59:47 UTC 2015 - a1 cd c9 1f db f3
+acce Thu Jan 15 02:59:47 UTC 2015 - 6a ce f1 1f db f3
+acce Thu Jan 15 02:59:47 UTC 2015 - 97 cd 73 1f 3d f5
+acce Thu Jan 15 02:59:47 UTC 2015 - 57 cc aa 20 17 f0
+acce Thu Jan 15 02:59:47 UTC 2015 - 1b cd ac 1f 79 f3
+acce Thu Jan 15 02:59:48 UTC 2015 - cb ce 46 20 92 f3
+acce Thu Jan 15 02:59:48 UTC 2015 - 39 ce 8f 1f 7f f3
+acce Thu Jan 15 02:59:48 UTC 2015 - fc ce 07 1f 7d f4
+acce Thu Jan 15 02:59:48 UTC 2015 - b0 ce 11 1f 84 f3
+acce Thu Jan 15 02:59:48 UTC 2015 - 4f ce 06 1f 99 f6
+acce Thu Jan 15 02:59:48 UTC 2015 - 34 cd 47 1f e2 f4
+acce Thu Jan 15 02:59:48 UTC 2015 - 2f ce c4 1f 0d f2
+acce Thu Jan 15 02:59:48 UTC 2015 - 51 cd 47 1f 64 f2
+acce Thu Jan 15 02:59:48 UTC 2015 - c3 cc 73 1e 5d f3
+acce Thu Jan 15 02:59:48 UTC 2015 - fd ce 80 1f 74 f3
+acce Thu Jan 15 03:00:04 UTC 2015 - 52 ce f0 1f 8f f3
+acce Thu Jan 15 03:00:04 UTC 2015 - d4 ce b9 1f 27 f2
+acce Thu Jan 15 03:00:04 UTC 2015 - bb cf 80 1f ac f2
+acce Thu Jan 15 03:00:04 UTC 2015 - 16 cc 54 1e d4 f0
+acce Thu Jan 15 03:00:04 UTC 2015 - 44 ce 53 20 3b f2
+acce Thu Jan 15 03:00:05 UTC 2015 - 07 ce 88 1f 6a f2
+acce Thu Jan 15 03:00:05 UTC 2015 - d8 cd 00 1f a3 f2
+acce Thu Jan 15 03:00:05 UTC 2015 - 9d cd 16 1e d9 f2
+acce Thu Jan 15 03:00:05 UTC 2015 - a6 cd fc 20 d0 f3
+acce Thu Jan 15 03:00:05 UTC 2015 - 18 cd 16 20 b0 f3
+acce Thu Jan 15 03:00:05 UTC 2015 - 8d cd c1 1f 8c f3
+acce Thu Jan 15 03:00:05 UTC 2015 - 63 d0 74 1f d1 f0
+acce Thu Jan 15 03:00:05 UTC 2015 - c6 ce 97 1e e8 f1
+acce Thu Jan 15 03:00:06 UTC 2015 - f1 cd bd 20 ab f2
+acce Thu Jan 15 03:00:06 UTC 2015 - cf ce cc 20 b4 f3
+acce Thu Jan 15 03:00:06 UTC 2015 - f5 ce 7d 1f c7 f4
+acce Thu Jan 15 03:00:06 UTC 2015 - 23 ce 16 1e 70 f4
+acce Thu Jan 15 03:00:06 UTC 2015 - e4 ce f9 20 bb f4
+acce Thu Jan 15 03:00:06 UTC 2015 - 06 cd 89 1f 9d f2
+acce Thu Jan 15 03:00:06 UTC 2015 - 5a ce 2f 1f 7d f3
+acce Thu Jan 15 03:00:06 UTC 2015 - dd cd dc 1f 20 f3
+acce Thu Jan 15 03:00:06 UTC 2015 - 80 cf 92 1f e0 f2
+acce Thu Jan 15 03:00:07 UTC 2015 - 23 cc 07 1f 40 f3
+acce Thu Jan 15 03:00:07 UTC 2015 - 24 cd 78 20 38 f3
+acce Thu Jan 15 03:00:07 UTC 2015 - 3b ce 07 20 07 f2
+acce Thu Jan 15 03:00:07 UTC 2015 - 97 ce 24 1f ca f1
+acce Thu Jan 15 03:00:07 UTC 2015 - 02 ce cc 1e 98 f3
+acce Thu Jan 15 03:00:07 UTC 2015 - 51 cd 4c 1e a5 f2
+acce Thu Jan 15 03:00:07 UTC 2015 - e1 cd d4 1f 97 f4
+acce Thu Jan 15 03:00:07 UTC 2015 - 48 cc ad 1f 56 f4
+acce Thu Jan 15 03:00:07 UTC 2015 - e5 cd e4 1e 14 f1
+acce Thu Jan 15 03:00:07 UTC 2015 - 66 ce 52 1f 25 ef
+acce Thu Jan 15 03:00:08 UTC 2015 - ac cd 79 1e 5a f4
+acce Thu Jan 15 03:00:08 UTC 2015 - 04 cc 48 1f ed f0
+acce Thu Jan 15 03:00:08 UTC 2015 - e5 ce 4a 1f c2 f4
+acce Thu Jan 15 03:00:08 UTC 2015 - 0d cd 1e 20 9d f3
+acce Thu Jan 15 03:00:08 UTC 2015 - 18 ce 02 20 c8 f1
+acce Thu Jan 15 03:00:08 UTC 2015 - cf ce 64 1f 3f f1
+acce Thu Jan 15 03:00:08 UTC 2015 - 56 ce 7b 20 58 f4
+acce Thu Jan 15 03:00:08 UTC 2015 - 9f ce 32 20 31 f2
+acce Thu Jan 15 03:00:08 UTC 2015 - ef ce 2b 1f 25 f3
+acce Thu Jan 15 03:00:09 UTC 2015 - 77 cf 44 1f e4 f2
+acce Thu Jan 15 03:00:09 UTC 2015 - 61 ce 6d 1f a8 f2
+acce Thu Jan 15 03:00:09 UTC 2015 - 60 ce 43 1f a6 f2
+acce Thu Jan 15 03:00:09 UTC 2015 - 7f ce 62 20 5f f4
+acce Thu Jan 15 03:00:09 UTC 2015 - ed ce 54 1f 40 f2
+acce Thu Jan 15 03:00:09 UTC 2015 - ab cd 55 1f cc f2
+acce Thu Jan 15 03:00:09 UTC 2015 - b6 d0 98 1f cf f1
+acce Thu Jan 15 03:00:09 UTC 2015 - d8 cd 10 1f e8 f2
+acce Thu Jan 15 03:00:10 UTC 2015 - 60 cd 11 1e da f5
+acce Thu Jan 15 03:00:10 UTC 2015 - c8 cd 07 1f b8 f2
+acce Thu Jan 15 03:00:10 UTC 2015 - 40 ce 06 1e 63 f3
+acce Thu Jan 15 03:00:10 UTC 2015 - a4 cd 6b 1f 1c f0
+acce Thu Jan 15 03:00:10 UTC 2015 - a4 cd 1f 1f ac f2
+root@beaglebone:~/GetData# date
+Thu Jan 15 03:00:47 UTC 2015
+root@beaglebone:~/GetData# date
+Thu Jan 15 03:00:54 UTC 2015
+root@beaglebone:~/GetData# date~
+-bash: date~: command not found
+root@beaglebone:~/GetData# date
+Thu Jan 15 03:00:56 UTC 2015
+root@beaglebone:~/GetData# date
+Thu Jan 15 03:00:57 UTC 2015
+root@beaglebone:~/GetData# date
+Thu Jan 15 03:00:58 UTC 2015
+root@beaglebone:~/GetData# date
+Thu Jan 15 03:00:58 UTC 2015
+root@beaglebone:~/GetData# date
+Thu Jan 15 03:00:59 UTC 2015
+root@beaglebone:~/GetData# date
+Thu Jan 15 03:00:59 UTC 2015
+root@beaglebone:~/GetData# date
+Thu Jan 15 03:00:59 UTC 2015
+root@beaglebone:~/GetData# date
+Thu Jan 15 03:01:00 UTC 2015
+root@beaglebone:~/GetData# date
+Thu Jan 15 03:01:00 UTC 2015
+root@beaglebone:~/GetData# date
+Thu Jan 15 03:01:01 UTC 2015
+root@beaglebone:~/GetData# date
+Thu Jan 15 03:01:01 UTC 2015
+root@beaglebone:~/GetData# date
+Thu Jan 15 03:01:02 UTC 2015
+root@beaglebone:~/GetData# date
+Thu Jan 15 03:01:02 UTC 2015
+root@beaglebone:~/GetData# date
+Thu Jan 15 03:01:03 UTC 2015
+root@beaglebone:~/GetData# date
+Thu Jan 15 03:01:03 UTC 2015
+root@beaglebone:~/GetData# date
+Thu Jan 15 03:01:03 UTC 2015
+root@beaglebone:~/GetData# date
+Thu Jan 15 03:01:04 UTC 2015
+root@beaglebone:~/GetData# date
+Thu Jan 15 03:01:04 UTC 2015
+root@beaglebone:~/GetData# date
+Thu Jan 15 03:01:05 UTC 2015
+root@beaglebone:~/GetData# date
+Thu Jan 15 03:01:05 UTC 2015
+root@beaglebone:~/GetData# date
+Thu Jan 15 03:01:06 UTC 2015
+root@beaglebone:~/GetData# date
+Thu Jan 15 03:01:06 UTC 2015
+root@beaglebone:~/GetData# date
+Thu Jan 15 03:01:06 UTC 2015
+root@beaglebone:~/GetData# ^C
+root@beaglebone:~/GetData# cd ^C
+root@beaglebone:~/GetData# cd
+root@beaglebone:~# ls
+DeviceTree  GetData  HardwareTest  accelData.txt  oldGetData  run_on_boot.sh  sdcard  wifi-reset
+root@beaglebone:~# cd^C
+root@beaglebone:~# vim run_on_boot.sh ^C
+root@beaglebone:~# vim run_on_boot.sh ^C
+root@beaglebone:~# /^C
+root@beaglebone:~# cd ^C
+root@beaglebone:~# cd ^C
+root@beaglebone:~# cd ^C
+root@beaglebone:~# ls
+DeviceTree  GetData  HardwareTest  accelData.txt  oldGetData  run_on_boot.sh  sdcard  wifi-reset
+root@beaglebone:~# cd GetData/
+root@beaglebone:~/GetData# ls
+GetDataCTutorial.c  L3G.h  LSM303.h  a.out  accelData.txt  data.txt  i2c-dev.h  main  main.c  manualGetDataR2.c  sensor.c
+root@beaglebone:~/GetData# rm accelData.txt
+root@beaglebone:~/GetData# ./a.out
+sensor set
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+No size specified (using byte-data access)
+^Z
+[1]+  Stopped                 ./a.out
+root@beaglebone:~/GetData# kill %%
+[1]+  Terminated              ./a.out
+root@beaglebone:~/GetData# ./a.out ^C
+root@beaglebone:~/GetData# jobs
+root@beaglebone:~/GetData# ./a.out  2>/dev/null
+sensor set
+^Z
+[1]+  Stopped                 ./a.out 2> /dev/null
+root@beaglebone:~/GetData# kill %%
+[1]+  Terminated              ./a.out 2> /dev/null
+root@beaglebone:~/GetData# jobs
+root@beaglebone:~/GetData# vim accelData.txt
+root@beaglebone:~/GetData# ls -alh
+total 372K
+drwxr-xr-x  2 root root 4.0K Jan 15 03:02 .
+drwx------ 12 root root 4.0K Jan 15 03:02 ..
+-rw-r--r--  1 root root 1.8K Jan 14 00:05 GetDataCTutorial.c
+-rw-r--r--  1 root root  881 Jan 11 21:50 L3G.h
+-rw-r--r--  1 root root 2.5K Jan 11 21:50 LSM303.h
+-rwxr-xr-x  1 root root 5.2K Jan 15 02:59 a.out
+-rw-r--r--  1 root root 4.5K Jan 15 03:01 accelData.txt
+-rw-r--r--  1 root root 294K Jan 12 23:40 data.txt
+-rw-r--r--  1 root root 9.3K Jan 11 21:53 i2c-dev.h
+-rwxr-xr-x  1 root root 9.4K Jan 11 22:17 main
+-rw-r--r--  1 root root 3.3K Jan 11 21:57 main.c
+-rw-r--r--  1 root root 1.2K Jan 15 02:59 manualGetDataR2.c
+-rw-r--r--  1 root root 2.8K Jan 13 21:26 sensor.c
+root@beaglebone:~/GetData# ls ^C
+root@beaglebone:~/GetData# ls -alh
+total 372K
+drwxr-xr-x  2 root root 4.0K Jan 15 03:02 .
+drwx------ 12 root root 4.0K Jan 15 03:02 ..
+-rw-r--r--  1 root root 1.8K Jan 14 00:05 GetDataCTutorial.c
+-rw-r--r--  1 root root  881 Jan 11 21:50 L3G.h
+-rw-r--r--  1 root root 2.5K Jan 11 21:50 LSM303.h
+-rwxr-xr-x  1 root root 5.2K Jan 15 02:59 a.out
+-rw-r--r--  1 root root 4.5K Jan 15 03:01 accelData.txt
+-rw-r--r--  1 root root 294K Jan 12 23:40 data.txt
+-rw-r--r--  1 root root 9.3K Jan 11 21:53 i2c-dev.h
+-rwxr-xr-x  1 root root 9.4K Jan 11 22:17 main
+-rw-r--r--  1 root root 3.3K Jan 11 21:57 main.c
+-rw-r--r--  1 root root 1.2K Jan 15 02:59 manualGetDataR2.c
+-rw-r--r--  1 root root 2.8K Jan 13 21:26 sensor.c
+root@beaglebone:~/GetData# cd ^C
+root@beaglebone:~/GetData# cd
+root@beaglebone:~# ls
+DeviceTree  GetData  HardwareTest  accelData.txt  oldGetData  run_on_boot.sh  sdcard  wifi-reset
+root@beaglebone:~# vim run_on_boot.sh
+
+# Any command here will be run on startup -Jonathan Frias
+
+# Mount SD card for data logging
+mount /dev/mmcblk1p2 /root/sdcard
+
+# Enable Devices
+/root/HardwareTest/build
+
+/root//GetData/a.out 2>/dev/null
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+                                                                                                                                                      10,32         All

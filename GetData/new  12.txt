@@ -1,0 +1,25 @@
+char filename[20];
+int i2cbus; 
+int address;
+int daddress; // might be 1 from i2c commands
+int res;
+
+i2cbus = lookup_i2c_bus(1);
+address = parse_i2c_address(0x6b);
+file = open_i2c_dev(i2cbus, filename, sizeof(filename), 0);
+
+if (file < 0 || set_slave_addr(file, address, 0))
+
+ioctl(file, I2C_PEC, 1);
+
+
+// One of the following blocks should be called:
+{
+	res = i2c_smbus_write_byte(file, daddress);
+	res = i2c_smbus_read_word_data(file, daddress);
+}
+{
+	res = i2c_smbus_read_byte_data(file, daddress);
+}
+
+printf("0x%0*x\n", size == I2C_SMBUS_WORD_DATA ? 4 : 2, res);

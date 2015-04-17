@@ -1,494 +1,371 @@
-./a.out
-./a.out
-./a.out
-./a.out
-./a.out
-./a.out
-./a.out
-./a.out
-./a.out
-./a.out
-./a.out
-exit
-who
-write root pts/0
-ls
-cd GetData/
-ls
-gcc manualGetDataR2.c 
-./a.out
-ls
-nano data.txt
-write root pts/0 
-i2cdump 1 0x6b 
-who
-write root pts/3
-exit
-ls
-cd HardwareTest/
-ls
-cat /sys/devices/bone_capemgr.9/slots
-./build
-echo 255 /dev/ttyO4
-echo 255 > /dev/ttyO4
-echo 255 > /dev/ttyO4
-echo 00 > /dev/ttyO4
-echo 01 > /dev/ttyO4
-echo 01 > /dev/ttyO4
-echo 1 > /dev/ttyO4
-echo 1 > /dev/ttyO4
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+./appControl_0
+./appControl_0
+./appControl_0
 clear
 ls
-ls -la
-who
-./a.out
-who
-write root pts/1
+gcc -lm appControl_r0.c -o appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+./appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+./stop 
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+./stop 
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+./stop 
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
 ls
-nano build 
-clear
-ls
-gcc HardwareTestR0.c 
-./a.out
-gcc HardwareTestR0.c 
-gcc HardwareTestR0.c 
-gcc HardwareTestR0.c 
-./a.out
-./a.out
-./a.out
-./a.out
-gcc HardwareTestR0.c 
-./a.out
-gcc HardwareTestR0.c 
-gcc HardwareTestR0.c 
-gdb
-gdb a.out
-gcc HardwareTestR0.c 
-gcc HardwareTestR1.c 
-gcc HardwareTestR1.c 
-./a.out
-gcc HardwareTestR1.c 
-gcc HardwareTestR1.c 
-./a.out
-gcc HardwareTestR1.c 
-./a.out
-gcc HardwareTestR1.c 
-./a.out
-gdb a.out
-./build
-
-gcc HardwareTestR1.c 
-gcc HardwareTestR1.c 
-gcc HardwareTestR1.c 
-./a.out
-gcc HardwareTestR1.c 
-./a.out
-gcc HardwareTestR1.c 
-./a.out
-gcc HardwareTestR1.c 
-gcc HardwareTestR1.c 
-gcc HardwareTestR1.c 
-gcc HardwareTestR1.c 
-gcc HardwareTestR1.c 
-clear
-gcc HardwareTestR1.c 
-gcc HardwareTestR1.c 
-gcc HardwareTestR1.c 
-clear
-./a.out
-./a.out
-gcc HardwareTestR1.c 
-./a.out
-gcc HardwareTestR1.c 
-gcc HardwareTestR1.c 
-gcc HardwareTestR1.c 
-./a.out
-./a.out
-gcc HardwareTestR1.c 
-./a.out
-gcc HardwareTestR1.c 
-./a.out
-./a.out
-./a.out
-./a.out
-./a.out
-gcc HardwareTestR1.c
-./a.out
-./a.out
-
-./a.out
-./a.out
-./a.out
-gcc HardwareTestR1.c
-gcc HardwareTestR1.c
-gcc HardwareTestR1.c
-gcc HardwareTestR1.c
-./a.out
-./a.out
-./a.out
-./a.out
-./a.out
-gcc HardwareTestR1.c
-./a.out
-./a.out
-gcc HardwareTestR1.c
-./a.out
-gcc HardwareTestR1.c
-
-gcc HardwareTestR1.c
-gcc HardwareTestR1.c
-./a.out
-gcc HardwareTestR1.c
-./a.out
-./a.out
-./a.out
-gcc HardwareTestR1.c
-./a.out
-gcc HardwareTestR1.c
-./a.out
-./a.out
-gcc HardwareTestR1.c
-./a.out
-gcc HardwareTestR1.c
-./a.out
-gcc HardwareTestR1.c
-./a.out
-gcc HardwareTestR1.c
-./a.out
-gcc HardwareTestR1.c
-./a.out
-gcc HardwareTestR1.c
-./a.out
-gcc HardwareTestR1.c
-./a.out
-gcc HardwareTestR1.c
-./a.out
-gcc HardwareTestR1.c
-./a.out
-gcc HardwareTestR1.c
-./a.out
+./stop 
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
 shutdown -h now
 ls
-cd H
-cd HardwareTest/
+cd AppControl/
 ls
-./a.out
-./a.out
-./a.out
-./a.out
-./a.out
-./a.out
-./a.out
-./a.out
-./a.out
-./a.out
-./a.out
-./a.out
-./a.out
-./a.out
-./a.out
-./a.out
-./a.out
-
-./a.out
-./a.out
-./a.out
-./a.out
-ls
-./a.out
-./a.out
-./a.out
-./a.out
-ls
-cd HardwareTest/
-ls
-./build 
-gcc HardwareTestR1.c
-./a.out
-./a.out
-./a.out
-gcc HardwareTestR1.c
-./a.out
-gcc HardwareTestR1.c
-./a.out
-./build
-./a.out
-gcc HardwareTestR1.c
-./a.out
-./a.out
-./a.out
-gcc HardwareTestR1.c
-./a.out
-gcc HardwareTestR1.c
-./a.out
-gcc HardwareTestR1.c
-./a.out
-./a.out
-gcc HardwareTestR1.c
-./a.out
-./a.out
-gcc HardwareTestR1.c
-./a.out
-gcc HardwareTestR1.c
-./a.out
-gcc HardwareTestR1.c
-./a.out
-gcc HardwareTestR1.c
-gcc HardwareTestR1.c
-./a.out
-gcc HardwareTestR1.c
-./a.out
-./a.out
-./a.out
-gcc HardwareTestR1.c
-./a.out
-./a.out
-gcc HardwareTestR1.c
-./a.out
-./a.out
-gcc HardwareTestR1.c
-./a.out
-gcc HardwareTestR1.c
-./a.out
-./a.out
-gcc HardwareTestR1.c
-./a.out
-./a.out
-gcc HardwareTestR1.c
-./a.out
-gcc HardwareTestR1.c
-./a.out
-gcc HardwareTestR1.c
-./a.out
-gcc HardwareTestR1.c
-./a.out
-gcc HardwareTestR1.c
-./a.out
-gcc HardwareTestR1.c
-./a.out
-gcc HardwareTestR1.c
-./a.out
-gcc HardwareTestR1.c
-./a.out
-gcc HardwareTestR1.c
-./a.out
-gcc HardwareTestR1.c
-./a.out
-./a.out
-gcc HardwareTestR1.c
-./a.out
-gcc HardwareTestR1.c
-./a.out
+./appControl_0
+gcc -lm appControl_r0.c -o appControl_0
+./appControl_0
+./stop 
+./appControl_0
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_0
+gcc -lm appControl_r1.c -o appControl_1
+gcc -lm appControl_r1.c -o appControl_1
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_1
+./stop 
+./appControl_1
+./stop 
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_1
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_1
+./stop 
 shutdown -h now
 ls
-cd HardwareTest/ls
-cd HardwareTest/
+cd AppControl/
 ls
-./a.out
-nano HardwareTestR1.c 
-gcc HardwareTestR1.c 
-./a.out
-./a.out
-./build
-./a.out
-nano HardwareTestR1.c 
-gcc HardwareTestR1.c 
-./a.out
-cd HardwareTest/
-ls
-./a.out
-cd HardwareTest/
-./a.out
-./a.out
+./appControl_0
+./appControl_0
 shutdown -h now
 ls
-cd HardwareTest/
+cd AppControl/
 ls
-./a.out
-./build
-./a.out
-gcc HardwareTestR1.c 
-./a.out
-./a.out
-gcc HardwareTestR1.c 
-./a.out
-gcc HardwareTestR1.c 
-./a.out
-ls
-rm a.out 
-gcc HardwareTestR1.c -o testPacketShit
-ls
-clear
-ls
-ls -la
-gdb testPacketShit 
-gcc -g HardwareTestR1.c -o testPacketShit
-gdb testPacketShit 
-ls
-clear
-gcc -g HardwareTestR1.c -o testPacketShit
-gdb testPacketShit 
-./testPacketShit 
-./testPacketShit 
-./testPacketShit 
-./testPacketShit 
-./testPacketShit 
-exit
-ls
-/sys/bus/i2c/devices
-cd /sys/bus/i2c/devices
-ls
-cd..
-cd..
-cd ..
-cd ..
-cd ..
-cd ..
-ls -l /sys/bus/i2c/devices/i2c-*
-ls
-cd ..
-ls
-ls
-cd home
-ls
-cd ..
-cd root
-ls
-cd GetData/
-ls
-gcc GetDataCTutorial.c 
-gcc GetDataCTutorial.c 
-gcc GetDataCTutorial.c 
-./a.out
-gcc GetDataCTutorial.c 
-./a.out
-gcc GetDataCTutorial.c 
-clear
-gcc GetDataCTutorial.c 
-gcc GetDataCTutorial.c 
-clear
-gcc GetDataCTutorial.c 
-gcc GetDataCTutorial.c 
-gcc GetDataCTutorial.c 
-gcc GetDataCTutorial.c 
-gcc GetDataCTutorial.c 
-gcc GetDataCTutorial.c 
-gcc GetDataCTutorial.c 
-./a.out
-./a.out
-./a.out
-gcc GetDataCTutorial.c 
-./a.out
-gcc GetDataCTutorial.c 
-./a.out
-i2cdump 1 0x6b
-gcc GetDataCTutorial.c 
-./a.out
-gcc GetDataCTutorial.c 
-./a.out
-./a.out
-gcc GetDataCTutorial.c 
-./a.out
-gcc GetDataCTutorial.c 
-./a.out
-./a.out
-./a.out
-./a.out
-./a.out
-i2cdump 1 0x6b
-./a.out
-./a.out
-./a.out
-./a.out
-./a.out
-./a.out
-gcc GetDataCTutorial.c 
-./a.out
-i2cdump 1 0x6b
-./a.out
-gcc GetDataCTutorial.c 
-./a.out
-i2cdump 1 0x6b
-./a.out
-gcc GetDataCTutorial.c 
-./a.out
-i2cdump 1 0x6b
-./a.out
-gcc GetDataCTutorial.c 
-./a.out
-i2cdump 1 0x6b
-./a.out
-i2cdump 1 0x6b
-gcc GetDataCTutorial.c 
-./a.out
-gcc GetDataCTutorial.c 
-./a.out
-i2cdump 1 0x6b
-./a.out
-i2cdump 1 0x6b
-gcc GetDataCTutorial.c 
-./a.out
-i2cdump 1 0x6b
-gcc GetDataCTutorial.c 
-./a.out
-./a.out
-i2cdump 1 0x6b
-./a.out
-i2cdump 1 0x6b
-gcc GetDataCTutorial.c 
-./a.out
-gcc GetDataCTutorial.c 
-./a.out
-gcc GetDataCTutorial.c 
-./a.out
-gcc GetDataCTutorial.c 
-./a.out
-gcc GetDataCTutorial.c 
-gcc GetDataCTutorial.c 
-gcc GetDataCTutorial.c 
-./a.out
-gcc GetDataCTutorial.c 
-i2cdump 1 0x6b
-gcc GetDataCTutorial.c 
-./a.out
-./a.out
-gcc GetDataCTutorial.c 
-./a.out
-gcc GetDataCTutorial.c 
-./a.out
-gcc GetDataCTutorial.c 
-./a.out
-gcc GetDataCTutorial.c 
-./a.out
-i2cdump 1 0x6b
-./a.out
-i2cdump 1 0x6b
-gcc GetDataCTutorial.c 
-./a.out
-i2cdump 1 0x6b
-
-i2cdump 1 0x6b
-gcc GetDataCTutorial.c 
-gcc GetDataCTutorial.c 
-gcc GetDataCTutorial.c 
-gcc GetDataCTutorial.c 
-gcc GetDataCTutorial.c 
-gcc GetDataCTutorial.c 
-gcc GetDataCTutorial.c 
-gcc GetDataCTutorial.c 
-gcc GetDataCTutorial.c 
-./a.out
-./a.out
-i2cdump 1 0x6b
+./appControl_0
+./appControl_1
 shutdown -h now
 ls
-shutdown -h now
+cd AppControl/
 ls
-nano run_on_boot.sh 
-nano run_on_boot.sh 
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_1
+./stop 
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_1
+./stop 
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_1
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_1
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_1
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_1
+./stop 
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_1
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_1
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_1
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_1
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_1
+./stop 
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_1
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_1
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_1
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_1
+./stop 
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_1
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_1
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_1
+cd ../TestMoveWheelsCode/
 ls
-cd
-cd ..
+gcc move2wheelsSpin_r0.c 
+gcc -lm move2wheelsSpin_r0.c 
+./a.out 
+gcc -lm move2wheelsSpin_r0.c 
+./a.out 
+gcc -lm move2wheelsSpin_r0.c 
+./a.out 
+./a.out 
+cd ../AppControl/
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_1
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_1
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_1
+./appControl_1
+./appControl_1
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_1
+./appControl_1
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_1
+./appControl_1
+./appControl_1
+./stop 
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_1
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_1
+ls
+cd AppControl/
+ls
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_1
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_1
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_1
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_1
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_1
+./appControl_1
+gcc -lm appControl_r1.c -o appControl_1s
+./appControl_1s 
+gcc -lm appControl_r1.c -o appControl_1s
+./appControl_1s 
+./appControl_1
+./appControl_1
+gcc -lm appControl_r1.c -o appControl_1s
+./appControl_1s 
+gcc -lm appControl_r1.c -o appControl_1s
+./appControl_1s 
+gcc -lm appControl_r1.c -o appControl_1s
+./appControl_1s 
+gcc -lm appControl_r1.c -o appControl_1s
+./appControl_1s 
+gcc -lm appControl_r1.c -o appControl_1s
+./appControl_1s
+gcc -lm appControl_r1.c -o appControl_1s
+./appControl_1s
+gcc -lm appControl_r1.c -o appControl_1s
+./appControl_1s
+gcc -lm appControl_r1.c -o appControl_1s
+./appControl_1s
+gcc -lm appControl_r1.c -o appControl_1s
+./appControl_1s
+gcc -lm appControl_r1.c -o appControl_1s
+./appControl_1s
+./appControl_1s
+./appControl_1s
+./appControl_1s
+./appControl_1s
+./appControl_1s
+job
+jobs
+kill 1
+jobs
+ps
+ps
+kill top
+top
+ps
+ps aux
+ps
+kill 2736
+ps
+./appControl_1s
+./appControl_1s
+kill 2736
+ps
+reboot
+ls
+cd AppControl/
+ls
+./appControl_1s
+./appControl_1s
+./appControl_1s
+./appControl_1s
+gcc -lm appControl_r1.c -o appControl_1
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+./appControl_2
+./appControl_2
+ps
+./appControl_2
+ps
+proc
+netstat
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+./appControl_1
+gcc -lm appControl_r2.c -o appControl_2s
+halt
+ls
+iwconfig
+cd etc/networks
+cd etc/network
 cd ..
 ls
 cd etc/
@@ -496,5 +373,128 @@ ls
 cd network
 ls
 nano interfaces 
+reboot
+ls
+ls -alh
+ls -alh
+ifconfig 
+ls
+cat run_on_boot.sh 
+cd AppControl/
+ls
+./appControl_2
+ls
+cd AppControl/
+ls
+./appControl_2
+./appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+sleep 30; ./appControl_2
+ls
+cd ..
+ls
+cd etc/
+ls
+cat rc.local 
+ls
+unmount
 shutdown -h now
+ls
+cd AppControl/
+l
+sls
+ls
+./appControl_2
+./appControl_2
+./stop 
+./appControl_2
+./appControl_2
+./appControl_2
+ls
+cd AppControl/
+ls
+./appControl_2
+./appControl_2
+./appControl_2
+./appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+./appControl_2
+./appControl_2
+./appControl_2
+./appControl_2
+./appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+cd ..
+ls
+cd AppControl/
+ls
+pwd
+reboot
+ls
+cat run_on_boot.sh 
+proc
+ps
+cd AppControl/
+ls
+./appControl_2
+./appControl_2
+kill 1551
+./appControl_2
+ps
+ps adjx
+ps axjf
+kill 1425
+./appControl_2
+./appControl_2
 shutdown -h now
+ls
+nc -l 8081
+nc -l 8081
+nc -l -p 8081
+nc -l -p 8081
+nc -l -p 8081
+nc -l -p 8081
+nc -l8081
+nc -l 8081
+nc -l 8081
+reboot 
+nc -l 8081
+nc -l 8081
+nc -l 8081
+nc -l 8081
+nc -l -p 8081
+nc localhost 8081
+telnet localhost 8081
+apt-get
+nc localhost 8081
+ls
+cd AppControl/
+ls
+./appControl_2

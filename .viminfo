@@ -2,26 +2,87 @@
 # You may edit it if you're careful!
 
 # Value of 'encoding' when this file was written
-*encoding=latin1
+*encoding=utf-8
 
 
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~MSle0~/false
+~Msle0~/\<calcNorthOffset\>
+
+# Last Substitute String:
+$
 
 # Command Line History (newest to oldest):
+:!echo %
+:s
+:96
+:w
+:!
 :q!
+:set number
+:set hlsearch
+:sert n
+:bd!
+:bd
+:221
+:sp
+:331
+:e tools/i2cdump.c
+:!ls
+:e /boot/
+:vsp
+:e 
+:!q!
+:wq
+:set relativenumber
+:28
 :q
 :q:q::
-:w
-:wq
 :zz
 
 # Search String History (newest to oldest):
+? \<calcNorthOffset\>
+?/North
+? \<res\>
+? \<daddress\>
+? \<file\>
+?/I2C_PEC
+? \<pec\>
+? \<address\>
+?/address
+?/main
+? \<force\>
+?/set_slave_addr
+? \<size\>
+?/check_funcs
+?/i2
+? \<filename\>
+? \<open_i2c_dev\>
+?/i2cbus
+? \<i2cbus\>
+? \<flags\>
+? \<bankreg\>
+?/ba
+? \<bank\>
+? {
+?/ioctl
+?/smbus
+?/i2c_smbus_access
+?/i2c_smbus_read_byte_data
+?/i2c_smbus_read_block_data
+?/./lib/smbus.c
+?/5000
+?/root//GetData/a.out 2>/dev/null
+? \<parse_i2c_address\>
 ?/false
 ?/zz
 ???
+?/0x4E
+?/4E
+?/open
+?/fil
+?/./tools/i2cbusses.c:int set_slave_addr(int file, int address, int force)
 
 # Expression History (newest to oldest):
 
@@ -30,138 +91,293 @@
 # Input Line History (newest to oldest):
 
 # Registers:
+"0	LINE	0
+		i2cbus = lookup_i2c_bus(argv[flags+1]);
 "1	LINE	0
-	touch /tmp/a
+	/*
+	    i2cget.c - A user-space program to read an I2C register.
+	    Copyright (C) 2005-2012  Jean Delvare <jdelvare@suse.de>
+	
+	    Based on i2cset.c:
+	    Copyright (C) 2001-2003  Frodo Looijaard <frodol@dds.nl>, and
+	                             Mark D. Studebaker <mdsxyz123@yahoo.com>
+	    Copyright (C) 2004-2005  Jean Delvare
+	
+	    This program is free software; you can redistribute it and/or modify
+	    it under the terms of the GNU General Public License as published by
+	    the Free Software Foundation; either version 2 of the License, or
+	    (at your option) any later version.
+	
+	    This program is distributed in the hope that it will be useful,
+	    but WITHOUT ANY WARRANTY; without even the implied warranty of
+	    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	    GNU General Public License for more details.
+	
+	    You should have received a copy of the GNU General Public License
+	    along with this program; if not, write to the Free Software
+	    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+	    MA 02110-1301 USA.
+	*/
+	
+	#include <sys/ioctl.h>
+	#include <errno.h>
+	#include <string.h>
+	#include <stdio.h>
+	#include <stdlib.h>
+	#include <unistd.h>
+	#include <linux/i2c.h>
+	#include <linux/i2c-dev.h>
+	#include <i2c/smbus.h>
+	#include "i2cbusses.h"
+	#include "util.h"
+	#include "../version.h"
+	
+	static void help(void) __attribute__ ((noreturn));
+	
+	static void help(void)
+	{
+		fprintf(stderr,
+			"Usage: i2cget [-f] [-y] I2CBUS CHIP-ADDRESS [DATA-ADDRESS [MODE]]\n"
+			"  I2CBUS is an integer or an I2C bus name\n"
+			"  ADDRESS is an integer (0x03 - 0x77)\n"
+			"  MODE is one of:\n"
+			"    b (read byte data, default)\n"
+			"    w (read word data)\n"
+			"    c (write byte/read byte)\n"
 "2	LINE	0
+	/*
+	    i2cdump.c - a user-space program to dump I2C registers
+	    Copyright (C) 2002-2003  Frodo Looijaard <frodol@dds.nl>, and
+	                             Mark D. Studebaker <mdsxyz123@yahoo.com>
+	    Copyright (C) 2004-2012  Jean Delvare <jdelvare@suse.de>
+	
+	    This program is free software; you can redistribute it and/or modify
+	    it under the terms of the GNU General Public License as published by
+	    the Free Software Foundation; either version 2 of the License, or
+	    (at your option) any later version.
+	
+	    This program is distributed in the hope that it will be useful,
+	    but WITHOUT ANY WARRANTY; without even the implied warranty of
+	    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	    GNU General Public License for more details.
+	
+	    You should have received a copy of the GNU General Public License
+	    along with this program; if not, write to the Free Software
+	    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+	    MA 02110-1301 USA.
+	*/
+	
+	#include <sys/ioctl.h>
+	#include <errno.h>
+	#include <string.h>
+	#include <stdio.h>
+	#include <stdlib.h>
+	#include <unistd.h>
+	#include <linux/i2c.h>
+	#include <linux/i2c-dev.h>
+	#include <i2c/smbus.h>
+	#include "i2cbusses.h"
+	#include "util.h"
+	#include "../version.h"
+	
+	static void help(void)
+	{
+		fprintf(stderr,
+			"Usage: i2cdump [-f] [-y] [-r first-last] I2CBUS ADDRESS [MODE [BANK [BANKREG]]]\n"
+			"  I2CBUS is an integer or an I2C bus name\n"
+			"  ADDRESS is an integer (0x03 - 0x77)\n"
+			"  MODE is one of:\n"
+			"    b (byte, default)\n"
+			"    w (word)\n"
+			"    W (word on even register addresses)\n"
+			"    s (SMBus block)\n"
+			"    i (I2C block)\n"
+			"    c (consecutive byte)\n"
+			"    Append p for SMBus PEC\n");
+	}
+"3	LINE	0
+	/root/
+"4	LINE	0
+	# Now real development
+	touch me
+	
+"5	LINE	0
+	echo "The Beaglebone Black will Self-Destruct in ..."
+	sleep(1)
+	echo "3..."
+	sleep(.5)
+	echo "2..."
+	sleep(.25)
+	echo "1..."
+"6	LINE	0
+	touch /tmp/a
+"7	LINE	0
 	
 "q	CHAR	0
-	!qsad€kb€kb€kb
+	!qsadÂ€kbÂ€kbÂ€kb
 ""-	CHAR	0
-	false;
+	 
 
 # File marks:
-'0  1  13  ~/run_on_boot.sh
-'1  5  0  ~/run_on_boot.sh
-'2  24  0  ~/run_on_boot.sh
-'3  57  0  /usr/local/lib/node_modules/bonescript/index.js
-'4  19  12  /usr/local/lib/node_modules/bonescript/index.js
-'5  7  0  ~/run_on_boot.sh
-'6  3  1  ~/root
-'7  15  19  /etc/rc.local
-'8  1  0  /etc/rc.local
-'9  2  0  ~/.ssh/authorized_keys
+'0  95  0  ~/TestMoveWheelsCode/getdata_r0.c
+'1  256  57  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+'2  152  0  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+'3  491  0  /tmp/tmp-stuff/i2c-tools/tools/i2cdump.c
+'4  1  0  /tmp/tmp-stuff/i2c-tools/lib/smbus.c
+'5  2  0  /tmp/tmp-stuff/i2c-tools/lib/smbus.c
+'6  231  0  /tmp/tmp-stuff/i2c-tools/lib/smbus.c
+'7  2  0  /tmp/a.c
+'8  30  1  ~/GetData/manualGetDataR2.c
+'9  10  31  ~/run_on_boot.sh
 
 # Jumplist (newest first):
--'  1  13  ~/run_on_boot.sh
--'  2  0  ~/run_on_boot.sh
--'  5  0  ~/run_on_boot.sh
--'  8  0  ~/run_on_boot.sh
--'  6  0  ~/run_on_boot.sh
--'  24  0  ~/run_on_boot.sh
--'  7  0  ~/run_on_boot.sh
--'  57  0  /usr/local/lib/node_modules/bonescript/index.js
--'  5  0  /usr/local/lib/node_modules/bonescript/index.js
--'  1  0  /usr/local/lib/node_modules/bonescript/index.js
--'  19  12  /usr/local/lib/node_modules/bonescript/index.js
--'  3  1  ~/root
--'  1  0  ~/root
--'  15  19  /etc/rc.local
--'  5  0  /etc/rc.local
--'  1  0  /etc/rc.local
--'  16  0  /etc/rc.local
--'  3  0  /etc/rc.local
--'  2  0  ~/.ssh/authorized_keys
--'  1  0  ~/.ssh/authorized_keys
--'  3  0  ~/.ssh/authorized_keys
--'  8  0  /home/debian/Desktop/Alejandro/test.c
--'  1  0  /home/debian/Desktop/Alejandro/test.c
--'  8  0  /home/debian/Desktop/Alejandro/test.c
--'  1  0  /home/debian/Desktop/Alejandro/test.c
--'  8  0  /home/debian/Desktop/Alejandro/test.c
--'  1  0  /home/debian/Desktop/Alejandro/test.c
--'  8  0  /home/debian/Desktop/Alejandro/test.c
--'  1  0  /home/debian/Desktop/Alejandro/test.c
--'  2  0  ~/.ssh/authorized_keys
--'  1  0  ~/.ssh/authorized_keys
--'  3  0  ~/.ssh/authorized_keys
--'  8  0  /home/debian/Desktop/Alejandro/test.c
--'  1  0  /home/debian/Desktop/Alejandro/test.c
--'  8  0  /home/debian/Desktop/Alejandro/test.c
--'  1  0  /home/debian/Desktop/Alejandro/test.c
--'  8  0  /home/debian/Desktop/Alejandro/test.c
--'  1  0  /home/debian/Desktop/Alejandro/test.c
--'  8  0  /home/debian/Desktop/Alejandro/test.c
--'  1  0  /home/debian/Desktop/Alejandro/test.c
--'  2  0  ~/.ssh/authorized_keys
--'  1  0  ~/.ssh/authorized_keys
--'  3  0  ~/.ssh/authorized_keys
--'  8  0  /home/debian/Desktop/Alejandro/test.c
--'  1  0  /home/debian/Desktop/Alejandro/test.c
--'  8  0  /home/debian/Desktop/Alejandro/test.c
--'  1  0  /home/debian/Desktop/Alejandro/test.c
--'  8  0  /home/debian/Desktop/Alejandro/test.c
--'  1  0  /home/debian/Desktop/Alejandro/test.c
--'  8  0  /home/debian/Desktop/Alejandro/test.c
--'  1  0  /home/debian/Desktop/Alejandro/test.c
--'  2  0  ~/.ssh/authorized_keys
--'  1  0  ~/.ssh/authorized_keys
--'  3  0  ~/.ssh/authorized_keys
--'  8  0  /home/debian/Desktop/Alejandro/test.c
--'  1  0  /home/debian/Desktop/Alejandro/test.c
--'  8  0  /home/debian/Desktop/Alejandro/test.c
--'  1  0  /home/debian/Desktop/Alejandro/test.c
--'  8  0  /home/debian/Desktop/Alejandro/test.c
--'  1  0  /home/debian/Desktop/Alejandro/test.c
--'  8  0  /home/debian/Desktop/Alejandro/test.c
--'  1  0  /home/debian/Desktop/Alejandro/test.c
--'  14  0  /etc/rc.local
--'  2  0  ~/.ssh/authorized_keys
--'  1  0  ~/.ssh/authorized_keys
--'  3  0  ~/.ssh/authorized_keys
--'  8  0  /home/debian/Desktop/Alejandro/test.c
--'  1  0  /home/debian/Desktop/Alejandro/test.c
--'  8  0  /home/debian/Desktop/Alejandro/test.c
--'  1  0  /home/debian/Desktop/Alejandro/test.c
--'  8  0  /home/debian/Desktop/Alejandro/test.c
--'  1  0  /home/debian/Desktop/Alejandro/test.c
--'  8  0  /home/debian/Desktop/Alejandro/test.c
--'  1  0  /home/debian/Desktop/Alejandro/test.c
--'  2  0  ~/.ssh/authorized_keys
--'  1  0  ~/.ssh/authorized_keys
--'  3  0  ~/.ssh/authorized_keys
--'  8  0  /home/debian/Desktop/Alejandro/test.c
--'  1  0  /home/debian/Desktop/Alejandro/test.c
--'  8  0  /home/debian/Desktop/Alejandro/test.c
--'  1  0  /home/debian/Desktop/Alejandro/test.c
--'  8  0  /home/debian/Desktop/Alejandro/test.c
--'  1  0  /home/debian/Desktop/Alejandro/test.c
--'  8  0  /home/debian/Desktop/Alejandro/test.c
--'  1  0  /home/debian/Desktop/Alejandro/test.c
--'  2  0  ~/.ssh/authorized_keys
--'  1  0  ~/.ssh/authorized_keys
--'  3  0  ~/.ssh/authorized_keys
--'  8  0  /home/debian/Desktop/Alejandro/test.c
--'  1  0  /home/debian/Desktop/Alejandro/test.c
--'  8  0  /home/debian/Desktop/Alejandro/test.c
--'  1  0  /home/debian/Desktop/Alejandro/test.c
--'  8  0  /home/debian/Desktop/Alejandro/test.c
--'  1  0  /home/debian/Desktop/Alejandro/test.c
--'  8  0  /home/debian/Desktop/Alejandro/test.c
--'  1  0  /home/debian/Desktop/Alejandro/test.c
--'  2  0  ~/.ssh/authorized_keys
--'  1  0  ~/.ssh/authorized_keys
--'  3  0  ~/.ssh/authorized_keys
+-'  95  0  ~/TestMoveWheelsCode/getdata_r0.c
+-'  93  64  ~/TestMoveWheelsCode/getdata_r0.c
+-'  109  0  ~/TestMoveWheelsCode/getdata_r0.c
+-'  76  11  ~/TestMoveWheelsCode/getdata_r0.c
+-'  2  0  ~/TestMoveWheelsCode/getdata_r0.c
+-'  1  0  ~/TestMoveWheelsCode/getdata_r0.c
+-'  256  57  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  156  5  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  251  5  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  247  3  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  244  3  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  241  3  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  238  8  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  237  4  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  236  7  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  224  47  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  220  29  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  203  2  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  197  30  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  196  2  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  157  5  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  136  28  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  134  42  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  153  12  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  131  5  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  121  31  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  103  68  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  72  6  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  55  47  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  1  0  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  256  57  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  156  5  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  251  5  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  247  3  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  244  3  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  241  3  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  238  8  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  237  4  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  236  7  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  224  47  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  220  29  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  203  2  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  197  30  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  196  2  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  157  5  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  136  28  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  134  42  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  153  12  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  131  5  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  121  31  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  103  68  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  72  6  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  55  47  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+-'  1  0  /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
 
 # History of marks within files (newest to oldest):
 
+> ~/TestMoveWheelsCode/getdata_r0.c
+	"	95	0
+
+> /tmp/tmp-stuff/i2c-tools/tools/i2cget.c
+	"	256	57
+	^	190	64
+	.	235	0
+	+	152	0
+	+	152	0
+	+	219	0
+	+	1	0
+	+	190	0
+	+	229	0
+	+	235	0
+
+> /tmp/tmp-stuff/i2c-tools/tools/i2cbusses.c
+	"	412	3
+
+> /tmp/tmp-stuff/i2c-tools/tools/i2cdump.c
+	"	491	0
+	^	206	43
+	.	211	0
+	+	3	23
+	+	207	0
+	+	1	0
+	+	216	0
+	+	211	0
+
+> /tmp/tmp-stuff/i2c-tools/lib/smbus.c
+	"	1	0
+	^	40	22
+	.	40	0
+	+	212	26
+	+	40	0
+
+> /tmp/a
+	"	34	9
+
+> /tmp/a.c
+	"	2	0
+	^	2	1
+	.	2	0
+	+	2	0
+
+> ~/GetData/manualGetDataR2.c
+	"	30	1
+	^	26	9
+	.	26	8
+	+	17	1
+	+	27	2
+	+	28	0
+	+	27	0
+	+	19	0
+	+	28	124
+	+	28	0
+	+	28	125
+	+	28	0
+	+	28	119
+	+	26	8
+
 > ~/run_on_boot.sh
-	"	1	13
-	^	1	14
-	.	1	13
-	+	6	56
-	+	8	0
+	"	10	31
+	^	10	32
+	.	10	0
+	+	3	56
+	+	3	0
+	+	3	0
+	+	2	13
+	+	1	0
+	+	3	0
 	+	4	0
-	+	1	13
+	+	10	5
+	+	10	0
+	+	11	1
+	+	10	0
+
+> ~/GetData/accelData.txt
+	"	67	24
+
+> /tmp/tmp-stuff/i2c-tools/README
+	"	95	0
+	.	2	0
+	+	2	0
+
+> ~/oldGetData/jonathan.c
+	"	16	0
+	^	16	0
+	.	16	0
+	+	18	0
+	+	16	0
 
 > /usr/local/lib/node_modules/bonescript/index.js
 	"	57	0
