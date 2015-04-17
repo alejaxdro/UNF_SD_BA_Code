@@ -89,6 +89,7 @@ int * string2integerPair( char *tempString, int arrayInts[2] );
 int calculateTurnRate( int maxNorth, int turn, int commandAngle );
 int calculateSpeedRate( int topspeed, int speed, int turn, int commandMagnitude );
 int openDataSocket( void );
+int reconnectSocket( int timeout );
 void error(const char *msg);
 
 
@@ -116,6 +117,22 @@ int * string2integerPair( char *tempString, int arrayInts[2] ){
    arrayInts[0] = atoi(A);
    arrayInts[1] = atoi(M);
    return 0;
+}
+
+int reconnectSocket( int timeout ){
+	printf("Disconnected from Socket\n     Waiting for App ReConnect...\n");
+	close(newsockfd);
+	struct sockaddr_in cli_addr2;
+	// Listen for connection from client socket and accept
+	listen(socket_fd,5);
+	clilen = sizeof(cli_addr2);
+	newsockfd = accept(socket_fd, (struct sockaddr *) &cli_addr2, &clilen);
+	if (newsockfd < 0){
+		error("ERROR on accept");
+	}
+	timeout = (int)time(NULL);
+	printf("Connected to ClientSocket. %d\n\n", newsockfd);
+	return timeout;
 }
 
 int openDataSocket(){

@@ -110,6 +110,7 @@ int main ( void )
       // This reads in socket input
       n = recv( newsockfd, buffer, 1, 0 );
       if ( n < 0 ) error( "ERROR reading from socket" );
+		//if ( n ==0 ) reconnectSocket();
 //      printf("Msg: %s\n", buffer );
       
       // Check for end of line of message from app
@@ -174,17 +175,7 @@ int main ( void )
             }else{
                DEBUG_PRINT("Current Time: %d, Timeout: %d\n", current_time, timeout);
                if( current_time - timeout > 10 ){
-                  printf("Disconnected from Socket\n     Waiting for App ReConnect...\n");
-						close(newsockfd);
-                  // Listen for connection from client socket and accept
-                  listen(socket_fd,5);
-                  clilen = sizeof(cli_addr);
-                  newsockfd = accept(socket_fd, (struct sockaddr *) &cli_addr, &clilen);
-                  if (newsockfd < 0){
-                     error("ERROR on accept");
-                  }
-                  timeout = (int)time(NULL);
-                  printf("Connected to ClientSocket. %d\n\n", newsockfd);
+						timeout = reconnectSocket( timeout );
                }                  
                // Stops both motors; This is for Safety.
                forwardBackwardM1( stop, ser4 );
