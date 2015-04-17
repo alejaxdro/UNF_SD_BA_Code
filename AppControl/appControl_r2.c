@@ -173,13 +173,18 @@ int main ( void )
                forwardBackwardM2( ( stop + speed2 + -turn ), ser4 );    
             }else{
                DEBUG_PRINT("Current Time: %d, Timeout: %d\n", current_time, timeout);
-               if( current_time - timeout > 9 ){
+               if( current_time - timeout > 10 ){
                   printf("Disconnected from Socket\n     Waiting for App ReConnect...\n");
 						close(newsockfd);
-						close(socket_fd);
                   // Listen for connection from client socket and accept
-						openDataSocket();
+                  listen(socket_fd,5);
+                  clilen = sizeof(cli_addr);
+                  newsockfd = accept(socket_fd, (struct sockaddr *) &cli_addr, &clilen);
+                  if (newsockfd < 0){
+                     error("ERROR on accept");
+                  }
                   timeout = (int)time(NULL);
+                  printf("Connected to ClientSocket. %d\n\n", newsockfd);
                }                  
                // Stops both motors; This is for Safety.
                forwardBackwardM1( stop, ser4 );
