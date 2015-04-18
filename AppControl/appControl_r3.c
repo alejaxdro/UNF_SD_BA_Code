@@ -110,6 +110,7 @@ int main ( void )
       // This reads in socket input
       n = recv( newsockfd, buffer, 1, 0 );
       if ( n < 0 ) error( "ERROR reading from socket" );
+		//if ( n ==0 ) reconnectSocket();
 //      printf("Msg: %s\n", buffer );
       
       // Check for end of line of message from app
@@ -126,7 +127,7 @@ int main ( void )
 //         printf("Msg--> :%s:\n", tempstr );
          // Receive A###M###P#\n and convert to 2 integers, angle and magnitude
          string2integerPair( tempstr, cmdArray );
-         //printf("COMMAND ARRAY: A %3d, M %3d\n", cmdArray[0], cmdArray[1]);
+//         printf("COMMAND ARRAY: A %3d, M %3d\n", cmdArray[0], cmdArray[1]);
          if( cmdArray[1] == 0 ){
             E_Stop = 1;
          }else{
@@ -143,11 +144,9 @@ int main ( void )
             // Calculate SPEED from Command and adjust by adding to current speed    
             
             DEBUG_PRINT("Speed Enabled <--main-- at time: %d\n", current_time);
-            if( speedEnable == 1 ){
-               speed += calculateSpeed( topspeed, speed, turn, cmdArray[1] );
-               speed1 = speed;
-               speed2 = speed;
-            }
+            speed = calculateSpeed( topspeed, speed, turn, cmdArray[1] );
+            speed1 = speed;
+            speed2 = speed;
             
             // Display Speeds/Turns
             //printf("Current Speeds = M1-->%d, M2-->%d\n", speed1+turn, speed2-turn);
@@ -166,28 +165,19 @@ int main ( void )
             
             // Send control packet to motors ********************************** MOTOR CONTROL STATEMENTS
             if( E_Stop == 0 ){
+               // Get current epoch time as int.
                timeout = (int)time(NULL);
                // Add and send control variables
                forwardBackwardM1( ( stop + speed1 + turn ), ser4 );
                forwardBackwardM2( ( stop + speed2 + -turn ), ser4 );    
             }else{
-               // Get current epoch time as int.
                DEBUG_PRINT("Current Time: %d, Timeout: %d\n", current_time, timeout);
-               if( current_time - timeout > 20 ){
-                  close(newsockfd);
-                  // Listen for connection from client socket and accept
-                  listen(socket_fd,5);
-                  clilen = sizeof(cli_addr);
-                  newsockfd = accept(socket_fd, (struct sockaddr *) &cli_addr, &clilen);
-                  if (newsockfd < 0){
-                     error("ERROR on accept");
-                  }
-                  timeout = (int)time(NULL);
-                  printf("Connected to ClientSocket. %d\n", newsockfd);
-               }                  
                // Stops both motors; This is for Safety.
                forwardBackwardM1( stop, ser4 );
                forwardBackwardM2( stop, ser4 );
+               if( current_time - timeout > 30 ){
+						timeout = reconnectSocket( timeout );
+               }
             }
             i = 0;
          }

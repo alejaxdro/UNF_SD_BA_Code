@@ -15,4 +15,4 @@ sleep 2
 /root/wifi-reset/wifi-reset.sh
 
 # Run program for AppControl
-/root/AppControl/appControl_2
+/root/AppControl/appControl_3

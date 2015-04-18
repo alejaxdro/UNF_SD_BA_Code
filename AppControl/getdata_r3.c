@@ -11,7 +11,7 @@ and writes from specified adresses on each device.
 2/15/15    "         " 	           v4r0  Writing Data to a file for matlab
 4/03/15    "         "             r2    AppControl tested and added string parsing
 4/06/15    "         "             r2    Adding parsing for 3 integers instead of 2. for sound.
-4/16/2015  Alejandro Leprevanche   r3    Changing speed rate function with appControl_r3.c to improve speed control *** ?
+
 	// accel - addr = 0x1d 0x6b gyro is the same 28-2d
 	// 0x28-0x2d which are as follows:
 	// 28 - XL	// 29 - XH
@@ -86,9 +86,10 @@ void getData( void );
 void displayprompt( void );
 double calcNorthOffset( int north, short x, short y, short z );
 int * string2integerPair( char *tempString, int arrayInts[2] );
-int calculateTurnRate( int maxNorth, int turn, int commandAngle );
-int calculateSpeedRate( int topspeed, int speed, int turn, int commandMagnitude );
+int calculateTurnRate( int maxNorth, int turn, int cmdAngle );
+int calculateSpeedRate( int topspeed, int speed, int turn, int cmdMagn, int cmdAngle );
 int openDataSocket( void );
+int reconnectSocket( int timeout );
 void error(const char *msg);
 
 
@@ -116,6 +117,22 @@ int * string2integerPair( char *tempString, int arrayInts[2] ){
    arrayInts[0] = atoi(A);
    arrayInts[1] = atoi(M);
    return 0;
+}
+
+int reconnectSocket( int timeout ){
+	printf("Disconnected from Socket\n     Waiting for App ReConnect...\n");
+	close(newsockfd);
+	struct sockaddr_in cli_addr2;
+	// Listen for connection from client socket and accept
+	listen(socket_fd,5);
+	clilen = sizeof(cli_addr2);
+	newsockfd = accept(socket_fd, (struct sockaddr *) &cli_addr2, &clilen);
+	if (newsockfd < 0){
+		error("ERROR on accept");
+	}
+	timeout = (int)time(NULL);
+	printf("Connected to ClientSocket. %d\n\n", newsockfd);
+	return timeout;
 }
 
 int openDataSocket(){
@@ -182,7 +199,7 @@ double calcNorthOffset( int northAx, short x, short y, short z ){
    return angle;
 }
 
-int calculateSpeed( int topspeed, int speed, int turn, int cmdMagn ) {
+int calculateSpeed( int topspeed, int speed, int turn, int cmdMagn, int cmdAngle ) {
    int cmdSpeed, dspeed = 1;
    
    // Calculate Speed from Magnitude received from App
@@ -192,13 +209,6 @@ int calculateSpeed( int topspeed, int speed, int turn, int cmdMagn ) {
    
    printf("TopS: %2d, CurS: %2d, CurTurn: %2d, cmdM: %3d, cmdS: %2d\n", topspeed, speed, turn, cmdMagn, cmdSpeed);
    
-   if( speed < cmdSpeed ){
-      return dspeed;
-   }else if( speed > cmdSpeed ){
-      return -dspeed;
-   }else{
-      return -speed;
-   }
 }
 
 int calculateTurnRate( int maxNorth, int turn, int cmdAngle ) {
@@ -215,15 +225,13 @@ int calculateTurnRate( int maxNorth, int turn, int cmdAngle ) {
    if( controlAngle > 200 ){
       // Increase turn
       //printf("---Turn Left\n");
-      speedEnable = 0;
       return -dspeed;
    }else if( controlAngle < 160  ){
       // Decrease turn
       //printf("---Turn Right\n");
-      speedEnable = 0;
       return dspeed;
    }else{
-      speedEnable = 1;
+      //speedEnable = 1;
       return -turn;
    }
    

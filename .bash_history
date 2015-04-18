@@ -1,211 +1,3 @@
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-./appControl_0
-./appControl_0
-./appControl_0
-clear
-ls
-gcc -lm appControl_r0.c -o appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-./appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-./stop 
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-./stop 
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-./stop 
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-ls
-./stop 
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-shutdown -h now
-ls
-cd AppControl/
-ls
-./appControl_0
-gcc -lm appControl_r0.c -o appControl_0
-./appControl_0
-./stop 
-./appControl_0
-gcc -lm appControl_r1.c -o appControl_1
-./appControl_0
-gcc -lm appControl_r1.c -o appControl_1
-gcc -lm appControl_r1.c -o appControl_1
-gcc -lm appControl_r1.c -o appControl_1
-./appControl_1
-./stop 
-./appControl_1
-./stop 
-gcc -lm appControl_r1.c -o appControl_1
-./appControl_1
-gcc -lm appControl_r1.c -o appControl_1
-./appControl_1
-./stop 
-shutdown -h now
-ls
-cd AppControl/
-ls
-./appControl_0
-./appControl_0
-shutdown -h now
-ls
-cd AppControl/
-ls
-./appControl_0
-./appControl_1
-shutdown -h now
-ls
-cd AppControl/
-ls
-gcc -lm appControl_r1.c -o appControl_1
-./appControl_1
-./stop 
-gcc -lm appControl_r1.c -o appControl_1
-./appControl_1
-./stop 
-gcc -lm appControl_r1.c -o appControl_1
-./appControl_1
-gcc -lm appControl_r1.c -o appControl_1
-./appControl_1
-gcc -lm appControl_r1.c -o appControl_1
-./appControl_1
-gcc -lm appControl_r1.c -o appControl_1
-./appControl_1
-./stop 
-gcc -lm appControl_r1.c -o appControl_1
-./appControl_1
-gcc -lm appControl_r1.c -o appControl_1
-./appControl_1
-gcc -lm appControl_r1.c -o appControl_1
-./appControl_1
-gcc -lm appControl_r1.c -o appControl_1
-./appControl_1
-gcc -lm appControl_r1.c -o appControl_1
-./appControl_1
-./stop 
-gcc -lm appControl_r1.c -o appControl_1
-./appControl_1
-gcc -lm appControl_r1.c -o appControl_1
-./appControl_1
-gcc -lm appControl_r1.c -o appControl_1
-./appControl_1
-gcc -lm appControl_r1.c -o appControl_1
-./appControl_1
-./stop 
-gcc -lm appControl_r1.c -o appControl_1
-./appControl_1
-gcc -lm appControl_r1.c -o appControl_1
-./appControl_1
-gcc -lm appControl_r1.c -o appControl_1
-./appControl_1
-cd ../TestMoveWheelsCode/
-ls
-gcc move2wheelsSpin_r0.c 
-gcc -lm move2wheelsSpin_r0.c 
-./a.out 
-gcc -lm move2wheelsSpin_r0.c 
-./a.out 
-gcc -lm move2wheelsSpin_r0.c 
-./a.out 
-./a.out 
-cd ../AppControl/
-gcc -lm appControl_r1.c -o appControl_1
-./appControl_1
-gcc -lm appControl_r1.c -o appControl_1
-./appControl_1
-gcc -lm appControl_r1.c -o appControl_1
 ./appControl_1
 ./appControl_1
 ./appControl_1
@@ -498,3 +290,211 @@ ls
 cd AppControl/
 ls
 ./appControl_2
+ls
+cd AppControl/
+ls
+rm appControl_0
+rm appControl_1
+rm appControl_1s 
+rm appControl_2
+rm appControl_2s
+ls
+ps
+ps -A
+kill 1425
+ls
+clear
+gcc -lm appControl_r2.c -o appControl_2
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_1
+./appControl_1
+./appControl_2
+gcc -lm appControl_r1.c -o appControl_1
+./appControl_1
+rm appControl_1
+gcc -lm appControl_r2.c -o appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+./appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+./appControl_2
+./appControl_2
+ps -A
+ss
+close(socket_fd);
+close
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+git status
+git add -p
+git add A
+git add -A
+git status
+git config --global color.ui true
+git status
+git add -A
+cd ..
+git add -A
+git status
+git commit
+git status
+ls
+cd AppControl/
+ls
+git status
+git diff
+git add
+git add .
+git status
+git git add -p
+git add -p
+git commit
+ls
+cd ..
+ls
+ls -la
+cd AppControl/
+ls
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2 
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2 
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2 
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2 
+gcc -lm appControl_r2.c -o appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2 
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2 
+./appControl_2 
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2 
+gcc -lm appControl_r2.c -o appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2 
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2 
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2 
+gcc -lm appControl_r2.c -o appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2 
+git status
+git add -p
+clear
+git commit
+exit
+ls
+cd AppControl/
+ls
+cp getdata_r2.c getdata_r3.c
+ls
+ss -nt
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+ss -ntl
+tcpdump
+apt-get install tcpdump
+netcat -l 8082 
+nc -l 8082
+nc -l 8081
+nc -l 8082
+nc -l 8082
+./appControl_2
+gcc -lm appControl_r2.c -o appControl_2
+./appControl_2
+exit
+ls
+until[ false ]; do
+until[ false ]; do echo hi done
+echo hi
+COUNTER = 10
+for i in $( ls ); do echo hi done; done
+while [ false ]; do echo hi done; done
+while [ false ]; do echo hi done; done
+while [ false ]; do echo hi; done
+ls
+cd AppControl/
+ls
+./appControl_2 
+./appControl_2 
+./appControl_2 
+ls
+gcc -lm appControl_r3.c -o appControl_3
+ls tmp/
+ls /tmp/
+gcc -lm appControl_r3.c -o appControl_3
+./appControl_3
+halt
