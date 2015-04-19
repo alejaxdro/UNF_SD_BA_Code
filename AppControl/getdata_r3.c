@@ -87,7 +87,7 @@ void displayprompt( void );
 double calcNorthOffset( int north, short x, short y, short z );
 int * string2integerPair( char *tempString, int arrayInts[2] );
 int calculateTurnRate( int maxNorth, int turn, int cmdAngle );
-int calculateSpeedRate( int topspeed, int speed, int turn, int cmdMagn, int cmdAngle );
+int calculateSpeed( int topspeed, int speed, int maxNorth, int cmdMagn, int cmdAngle );
 int openDataSocket( void );
 int reconnectSocket( int timeout );
 void error(const char *msg);
@@ -199,16 +199,26 @@ double calcNorthOffset( int northAx, short x, short y, short z ){
    return angle;
 }
 
-int calculateSpeed( int topspeed, int speed, int turn, int cmdMagn, int cmdAngle ) {
-   int cmdSpeed, dspeed = 1;
-   
+int calculateSpeed( int topspeed, int speed, int maxNorth, int cmdMagn, int cmdAngle ) {
+   int cmdSpeed, dspeed = 0;
+
+   // Calculate Angle offset from North
+   int angle = calcNorthOffset( maxNorth, magn.data.x.val, magn.data.y.val,magn.data.z.val );
+   //printf("Angle off North: %3d    cmdAngle: %3d\n", angle, cmdAngle);
+   int controlAngle = ( angle + -1*cmdAngle + 180 + 360 )%360;
+	
    // Calculate Speed from Magnitude received from App
    // cmdMagn is from 0 to 300 and speed can be from 0 to topspeed
    cmdSpeed = cmdMagn * (((topspeed-10)<<10) / 300);
    cmdSpeed = cmdSpeed / 1000;
    
-   printf("TopS: %2d, CurS: %2d, CurTurn: %2d, cmdM: %3d, cmdS: %2d\n", topspeed, speed, turn, cmdMagn, cmdSpeed);
-   
+	if( controlAngle < 180 ){
+		speed = cmdSpeed * ( controlAngle / 180 );
+	}else{
+		speed = cmdSpeed * ( ( 360 - controlAngle ) / 180 );
+	}
+   printf("cmdM: %3d, cmdS: %2d, CurS: %2d\n", cmdMagn, cmdSpeed, speed);
+   return speed;
 }
 
 int calculateTurnRate( int maxNorth, int turn, int cmdAngle ) {
@@ -222,11 +232,11 @@ int calculateTurnRate( int maxNorth, int turn, int cmdAngle ) {
    //printf("MagnAng: %3d, cmdAng: %3d, CtlAng: %3d, turn: %d\n", angle, cmdAngle, controlAngle, turn);
    
    // Accelerate towards range depending on which half you are in.
-   if( controlAngle > 200 ){
+   if( controlAngle > 190 ){
       // Increase turn
       //printf("---Turn Left\n");
       return -dspeed;
-   }else if( controlAngle < 160  ){
+   }else if( controlAngle < 170  ){
       // Decrease turn
       //printf("---Turn Right\n");
       return dspeed;

@@ -31,7 +31,7 @@
 
 // User Defined Libraries
 #include "roboClawLib.c"
-#include "getdata_r2.c"
+#include "getdata_r3.c"
 #include "termlib.c"
 
 // Global Declarations
@@ -86,7 +86,7 @@ int main ( void )
 	DEBUG_PRINT("Max Magnetic Field found: %d\n\n", maxNorth );
 
    // Set North magnitude
-   north = maxNorth - (maxNorth/7); //2700;//3100;
+   north = maxNorth - (maxNorth/10); //2700;//3100;
    DEBUG_PRINT("North Magnitude for FindNorth Control = %d\n", north );
    
    // SET SPEED BETWEEN 0 to 63, it is added to stop command
@@ -94,7 +94,7 @@ int main ( void )
    
    // Set speed and direction parameters
    dspeed = 2;
-   topspeed = 50;
+   topspeed = 60;
    DEBUG_PRINT("Speed Settings: \n dspeed = %d \ntopspeed = %d\n", dspeed, topspeed );
    cmdArray[0] = 0;
    cmdArray[1] = 0;
@@ -124,17 +124,17 @@ int main ( void )
          // Adds end of line to tempstr to make it a string
          tempstr[rcvcnt] = '\0';
          recv( newsockfd, clrBuffer, 1024, 0 );
-//         printf("Msg--> :%s:\n", tempstr );
+//       printf("Msg--> :%s:\n", tempstr );
          // Receive A###M###P#\n and convert to 2 integers, angle and magnitude
          string2integerPair( tempstr, cmdArray );
 //         printf("COMMAND ARRAY: A %3d, M %3d\n", cmdArray[0], cmdArray[1]);
-         if( cmdArray[1] == 0 ){
+         if( cmdArray[1] == 0 ) {
             E_Stop = 1;
-         }else{
+         } else {
             E_Stop = 0;
          }
          // Delay Loop
-         if( i = 350 ){
+         if( i = 550 ){
             // Update current data points
             getData();
             // Calculate TURN RATE from Command angle and adjust by adding to current turn difference
@@ -144,7 +144,7 @@ int main ( void )
             // Calculate SPEED from Command and adjust by adding to current speed    
             
             DEBUG_PRINT("Speed Enabled <--main-- at time: %d\n", current_time);
-            speed = calculateSpeed( topspeed, speed, turn, cmdArray[1] );
+            speed = calculateSpeed( topspeed, speed, maxNorth, cmdArray[1], cmdArray[0] );
             speed1 = speed;
             speed2 = speed;
             
@@ -187,9 +187,7 @@ int main ( void )
         tempstr[rcvcnt] = buffer[0];
         rcvcnt++;
       }
-      
-      
-      
+		
       // This writes to socket output
       //n = send( newsockfd, "I got your message", 18, MSG_DONTWAIT);
       // if ( n < 0 ) error("ERROR writing to socket");
