@@ -201,23 +201,24 @@ double calcNorthOffset( int northAx, short x, short y, short z ){
 
 int calculateSpeed( int topspeed, int speed, int maxNorth, int cmdMagn, int cmdAngle ) {
    int cmdSpeed, dspeed = 0;
-
+	double fraction = 0;
+	
    // Calculate Angle offset from North
    int angle = calcNorthOffset( maxNorth, magn.data.x.val, magn.data.y.val,magn.data.z.val );
-   //printf("Angle off North: %3d    cmdAngle: %3d\n", angle, cmdAngle);
    int controlAngle = ( angle + -1*cmdAngle + 180 + 360 )%360;
 	
    // Calculate Speed from Magnitude received from App
    // cmdMagn is from 0 to 300 and speed can be from 0 to topspeed
-   cmdSpeed = cmdMagn * (((topspeed-10)<<10) / 300);
+   cmdSpeed = cmdMagn * (((topspeed-5)<<10) / 300);
    cmdSpeed = cmdSpeed / 1000;
    
 	if( controlAngle < 180 ){
-		speed = cmdSpeed * ( controlAngle / 180 );
+		fraction = (double) controlAngle / 180.0;
 	}else{
-		speed = cmdSpeed * ( ( 360 - controlAngle ) / 180 );
+		fraction = ( (double)( 360 - controlAngle ) / 180.0 );
 	}
-   printf("cmdM: %3d, cmdS: %2d, CurS: %2d\n", cmdMagn, cmdSpeed, speed);
+   //printf("cmdM: %3d, cmdS: %2d, CurS: %2d\n", cmdMagn, cmdSpeed, speed);
+	speed = (double) cmdSpeed * fraction;
    return speed;
 }
 

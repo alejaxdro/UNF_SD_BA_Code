@@ -93,9 +93,8 @@ int main ( void )
    // This is used only for the function forwardBackwardM1() and ..M2()
    
    // Set speed and direction parameters
-   dspeed = 2;
-   topspeed = 60;
-   DEBUG_PRINT("Speed Settings: \n dspeed = %d \ntopspeed = %d\n", dspeed, topspeed );
+   topspeed = 40;
+   DEBUG_PRINT("Speed Settings: \n topspeed = %d\n", topspeed );
    cmdArray[0] = 0;
    cmdArray[1] = 0;
    bzero( clrBuffer, 1024 );
@@ -143,14 +142,12 @@ int main ( void )
             }
             // Calculate SPEED from Command and adjust by adding to current speed    
             
-            DEBUG_PRINT("Speed Enabled <--main-- at time: %d\n", current_time);
             speed = calculateSpeed( topspeed, speed, maxNorth, cmdArray[1], cmdArray[0] );
             speed1 = speed;
             speed2 = speed;
             
             // Display Speeds/Turns
-            //printf("Current Speeds = M1-->%d, M2-->%d\n", speed1+turn, speed2-turn);
-            //printf("Current turn: %d\n", turn );
+//            printf("Current Speeds = M1-->%d, M2-->%d\n", speed1+turn, speed2-turn);
             
             // Safety check to limit speed
             if ((speed1+turn <= topspeed) && (speed2+turn <= topspeed ) && (speed1-turn <= topspeed) && (speed2-turn <= topspeed)){
@@ -168,10 +165,11 @@ int main ( void )
                // Get current epoch time as int.
                timeout = (int)time(NULL);
                // Add and send control variables
+					printf("S = %d, T = %d\n", speed, turn );
                forwardBackwardM1( ( stop + speed1 + turn ), ser4 );
-               forwardBackwardM2( ( stop + speed2 + -turn ), ser4 );    
+               forwardBackwardM2( ( stop + speed2 + -turn ), ser4 );
             }else{
-               DEBUG_PRINT("Current Time: %d, Timeout: %d\n", current_time, timeout);
+               printf("Timeout: %d\n", current_time-timeout);
                // Stops both motors; This is for Safety.
                forwardBackwardM1( stop, ser4 );
                forwardBackwardM2( stop, ser4 );

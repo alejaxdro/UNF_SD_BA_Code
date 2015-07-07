@@ -1,108 +1,3 @@
-./appControl_1
-./appControl_1
-./appControl_1
-gcc -lm appControl_r1.c -o appControl_1
-./appControl_1
-./appControl_1
-gcc -lm appControl_r1.c -o appControl_1
-./appControl_1
-./appControl_1
-./appControl_1
-./stop 
-gcc -lm appControl_r1.c -o appControl_1
-./appControl_1
-gcc -lm appControl_r1.c -o appControl_1
-./appControl_1
-ls
-cd AppControl/
-ls
-gcc -lm appControl_r1.c -o appControl_1
-./appControl_1
-gcc -lm appControl_r1.c -o appControl_1
-./appControl_1
-gcc -lm appControl_r1.c -o appControl_1
-./appControl_1
-gcc -lm appControl_r1.c -o appControl_1
-./appControl_1
-gcc -lm appControl_r1.c -o appControl_1
-./appControl_1
-./appControl_1
-gcc -lm appControl_r1.c -o appControl_1s
-./appControl_1s 
-gcc -lm appControl_r1.c -o appControl_1s
-./appControl_1s 
-./appControl_1
-./appControl_1
-gcc -lm appControl_r1.c -o appControl_1s
-./appControl_1s 
-gcc -lm appControl_r1.c -o appControl_1s
-./appControl_1s 
-gcc -lm appControl_r1.c -o appControl_1s
-./appControl_1s 
-gcc -lm appControl_r1.c -o appControl_1s
-./appControl_1s 
-gcc -lm appControl_r1.c -o appControl_1s
-./appControl_1s
-gcc -lm appControl_r1.c -o appControl_1s
-./appControl_1s
-gcc -lm appControl_r1.c -o appControl_1s
-./appControl_1s
-gcc -lm appControl_r1.c -o appControl_1s
-./appControl_1s
-gcc -lm appControl_r1.c -o appControl_1s
-./appControl_1s
-gcc -lm appControl_r1.c -o appControl_1s
-./appControl_1s
-./appControl_1s
-./appControl_1s
-./appControl_1s
-./appControl_1s
-./appControl_1s
-job
-jobs
-kill 1
-jobs
-ps
-ps
-kill top
-top
-ps
-ps aux
-ps
-kill 2736
-ps
-./appControl_1s
-./appControl_1s
-kill 2736
-ps
-reboot
-ls
-cd AppControl/
-ls
-./appControl_1s
-./appControl_1s
-./appControl_1s
-./appControl_1s
-gcc -lm appControl_r1.c -o appControl_1
-gcc -lm appControl_r2.c -o appControl_2
-./appControl_2
-gcc -lm appControl_r2.c -o appControl_2
-./appControl_2
-gcc -lm appControl_r2.c -o appControl_2
-./appControl_2
-gcc -lm appControl_r2.c -o appControl_2
-./appControl_2
-gcc -lm appControl_r2.c -o appControl_2
-./appControl_2
-gcc -lm appControl_r2.c -o appControl_2
-gcc -lm appControl_r2.c -o appControl_2
-./appControl_2
-gcc -lm appControl_r2.c -o appControl_2
-./appControl_2
-gcc -lm appControl_r2.c -o appControl_2
-gcc -lm appControl_r2.c -o appControl_2
-./appControl_2
-gcc -lm appControl_r2.c -o appControl_2
 ./appControl_2
 gcc -lm appControl_r2.c -o appControl_2
 ./appControl_2
@@ -498,3 +393,108 @@ ls /tmp/
 gcc -lm appControl_r3.c -o appControl_3
 ./appControl_3
 halt
+ls
+cd AppControl/
+ls
+gcc -lm appControl_r3.c -o appControl_3
+./appControl_3
+./appControl_3
+lsof
+ls of
+ls -of
+lsof
+apt-get update
+lsof
+apt-get install lsof
+lsof
+ps -A
+kill 1440
+./appControl_3
+git status
+git diff
+git add -p
+git commit
+gcc -lm appControl_r3.c -o appControl_3
+./appControl_3
+clear
+git log 
+git config 
+git config --global user.name "alepervanche"
+git config --global user.email "alepervanche@hotmail.com"
+git diff 977fade54b5f6796eecaf44cea8d52900ab398a7
+clear
+gcc -lm appControl_r3.c -o appControl_3
+./appControl_3
+./stop 
+cat stop 
+PuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTY
+cat stop 
+PuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTY
+PuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTY
+cat
+ld
+./appControl_3
+gcc -lm appControl_r3.c -o appControl_3
+./appControl_3
+gcc -lm appControl_r3.c -o appControl_3
+./appControl_3
+./appControl_3
+./appControl_3
+ps -A
+./appControl_3
+reboot
+ls
+ps -A
+ps -A
+reboot
+ls
+cd AppControl/
+ls
+gcc -lm appControl_r3.c -o appControl_3
+./appControl_3
+ps -A
+kill 1423
+./appControl_3
+gcc -lm appControl_r3.c -o appControl_3
+gcc -lm appControl_r3.c -o appControl_3
+./appControl_3
+gcc -lm appControl_r3.c -o appControl_3
+./appControl_3
+ps -A
+kill 1424
+ps -A
+clear
+cd AppControl/
+ls
+./appControl_3
+gcc -lm appControl_r3.c -o appControl_3
+./appControl_3
+./appControl_3
+ls
+cd AppControl/
+ls
+ps -A
+kill 2520
+./appControl_3
+./appControl_3
+./appControl_3
+./appControl_3
+ls
+cd AppControl/
+ls
+rm appControl_2
+rm appControl_3
+ls
+ls
+gcc -lm appControl_r3.c -o appControl_3
+./appControl_3
+gcc -lm appControl_r3.c -o appControl_3
+./appControl_3
+ps -A
+kill 1429
+cd AppControl/
+ls
+./appControl_3
+ls
+ls -alh
+reboot 
