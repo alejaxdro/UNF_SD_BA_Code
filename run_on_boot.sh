@@ -1,5 +1,9 @@
+# run on boot.sh
+# 
+# Blue Armadillo on BBB embedded linux
+# 
+# Any command here will be run on startup
 
-# Any command here will be run on startup -Jonathan Frias
 
 # Mount SD card for data logging
 mount /dev/mmcblk1p2 /root/sdcard
